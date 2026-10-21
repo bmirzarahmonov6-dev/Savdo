@@ -217,9 +217,9 @@ $('go').onclick=function(){
   btn.disabled=true;btn.textContent='Yuborilmoqda...';$('er').textContent='';
   fetch(CFG.api,{method:'POST',headers:{'Content-Type':'application/json'},
    body:JSON.stringify({full_name:n,phone_number:'+'+t.replace(/\D/g,''),stream:st})})
-  .then(function(res){return res.json().catch(function(){return{}}).then(function(j){return{ok:res.ok,j:j}})})
+  .then(function(res){return res.json().catch(function(){return{}}).then(function(j){return{ok:res.ok,s:res.status,j:j}})})
   .then(function(o){btn.disabled=false;btn.textContent='✅ Buyurtmani tasdiqlash';
-   if(o.ok)done();else $('er').textContent="Yuborib bo'lmadi. Qayta urinib ko'ring yoki qo'ng'iroq qiling: "+CFG.phone})
+   if(o.ok)done();else $('er').textContent="Yuborib bo'lmadi ["+o.s+"] "+JSON.stringify(o.j).slice(0,220)+" — "+CFG.phone})  /* DEBUG: sinovdan keyin [..] va JSON qismini olib tashlaymiz */
   .catch(function(){btn.disabled=false;btn.textContent='✅ Buyurtmani tasdiqlash';$('er').textContent="Internet xatosi. Qayta urinib ko'ring"});
   return}
  var msg="🛒 Yangi buyurtma\nMahsulot: "+cp.n+"\nNarx: "+fmt(cp.p)+"\nIsm: "+n+"\nTel: "+t+"\nHudud: "+r;
