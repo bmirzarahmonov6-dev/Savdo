@@ -18,6 +18,23 @@ async function track(stream, ok) {
   } catch (e) {}
 }
 
+// Oxirgi buyurtmalar (ism va telefonsiz): saytdagi "Yangi buyurtma" xabari uchun.
+async function recent(stream, region) {
+  try {
+    const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+    const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+    if (!url || !token) return;
+    await fetch(url + "/pipeline", {
+      method: "POST",
+      headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
+      body: JSON.stringify([
+        ["LPUSH", "recent", JSON.stringify({ s: stream, r: region, t: Date.now() })],
+        ["LTRIM", "recent", 0, 19],
+      ]),
+    });
+  } catch (e) {}
+}
+
 module.exports = async (req, res) => {
   if (req.method !== "POST") return res.status(405).json({ error: "method" });
 
@@ -27,6 +44,7 @@ module.exports = async (req, res) => {
 
   const full_name = String(b.full_name || "").trim().slice(0, 100);
   const phone_number = String(b.phone_number || "").replace(/[^\d+]/g, "").slice(0, 16);
+  const region = String(b.region || "").trim().slice(0, 40);
   const stream = String(b.stream || "").replace(/\D/g, "").slice(0, 12);
   if (full_name.length < 2 || phone_number.replace(/\D/g, "").length < 12 || !stream)
     return res.status(400).json({ error: "invalid" });
@@ -57,6 +75,7 @@ module.exports = async (req, res) => {
       last = text;
       if (r.status !== 401 && r.status !== 403) {
         await track(stream, r.ok);
+        if (r.ok) await recent(stream, region);
         return res.status(r.ok ? 200 : 502).json({ ok: r.ok, auth: sc.name, upstream: safe(text) });
       }
     } catch (e) {

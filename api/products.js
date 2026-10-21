@@ -42,6 +42,12 @@ function clean(list) {
       d: str(x.d, 1000),
       f: (Array.isArray(x.f) ? x.f : []).slice(0, 12).map((t) => str(t, 120)).filter(Boolean),
       oqim: m ? "https://alijahon.uz/oqim/" + m[1] : "",
+      q: num(x.q),
+      rv: (Array.isArray(x.rv) ? x.rv : []).slice(0, 12).map((r) => {
+        r = r || {};
+        const st = Math.round(Number(r.r));
+        return { a: str(r.a, 40), s: str(r.s, 40), r: st >= 1 && st <= 5 ? st : 5, t: str(r.t, 300) };
+      }).filter((r) => r.a && r.t),
       hit: !!x.hit,
       active: x.active !== false,
     };
