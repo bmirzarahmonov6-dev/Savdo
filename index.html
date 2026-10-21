@@ -60,7 +60,7 @@ label{display:block;font-weight:600;font-size:14px;margin:12px 0 6px}
 .pm{z-index:30}.pm .md{text-align:center;max-width:420px}
 .pm .pi{font-size:92px;line-height:1;margin:4px 0}
 .pm .bd{display:inline-block;background:#e5383b;color:#fff;font-weight:800;padding:4px 14px;border-radius:99px;font-size:14px}
-.pm .tm{display:none;margin:10px 0;font-weight:700;color:var(--pr)}
+.pm .tm{margin:10px 0;font-weight:700;color:var(--pr)}
 .pm ul{list-style:none;padding:0;margin:10px 0;text-align:left;font-size:14.5px}.pm li{padding:3px 0}
 .pm .btn{font-size:18px;padding:15px}.pm .lk{background:none;border:0;color:var(--mut);margin-top:10px;cursor:pointer;font:inherit;text-decoration:underline}
 :root,:root:not([data-theme="light"]),:root[data-theme="dark"]{--bg:#181818;--card:#222;--tx:#fff;--mut:#9a9a9a;--pr:#ab9ff2;--pr2:#8b7ff0;--bd:#2e2e2e;color-scheme:dark}
@@ -104,14 +104,15 @@ input,select{background:#2a2a2a;border-color:#333;color:#fff}
 .okb .sm2 div{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:3px 0}.okb .sm2 div span:first-child{color:var(--mut)}
 .okb .stp{text-align:left;font-size:13px;line-height:1.45;margin:0 0 14px}.okb .stp p{display:flex;gap:10px;margin:0 0 8px}
 .okb .stp b{width:22px;height:22px;border-radius:50%;background:var(--pr);color:#181818;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none}
-.cd{display:none;text-align:center;font-weight:700;color:var(--pr);background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:10px;margin:10px 0}
-.qty{color:#ff7a7a;font-weight:700;font-size:13.5px;margin:10px 0 6px}.qb{height:6px;background:var(--bd);border-radius:3px;overflow:hidden;margin-bottom:10px}.qb i{display:block;height:100%;background:#ff7a7a;border-radius:3px}
-.cq{color:#ff7a7a;font-size:12px;font-weight:700}
-.gar{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:14px 0}.gar div{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;text-align:center;font-size:13.5px}.gar i{font-style:normal;font-size:24px;display:block}.gar span{color:var(--mut);font-size:12.5px}
-.dl{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:4px 14px;margin:14px 0}.dl div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--bd);font-size:14.5px}.dl div:last-child{border:0}.dl span{color:var(--mut)}
-.rv h2{margin:24px 0 6px;font-size:22px}.rv .av{text-align:center;color:var(--mut);margin-bottom:12px;font-size:14px}.rc{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px 14px;margin-bottom:8px}.rc .st{color:#ffd24a;letter-spacing:2px;font-size:14px}.rc p{margin:6px 0 0;font-size:14.5px}
-.qf{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:16px;margin:18px 0}.qf h3{margin:0 0 2px}.qf .sm{color:var(--pr);font-weight:700;margin-bottom:6px}
-.rt{position:fixed;left:12px;bottom:84px;max-width:290px;background:#222;border:1px solid var(--bd);border-radius:14px;padding:10px 14px;font-size:13.5px;z-index:15;display:none}
+[hidden]{display:none!important}
+.cd{margin:6px 0 0;font-size:12.5px;font-weight:700;color:#e5383b;font-variant-numeric:tabular-nums}
+.cdd{display:inline-block;margin:4px 0 0;padding:8px 14px;border-radius:12px;background:#e5383b1a;color:#e5383b;font-weight:700;font-variant-numeric:tabular-nums}
+.pm .tm{font-variant-numeric:tabular-nums}
+.rv{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.rv div{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px}.rv b{display:block;font-size:14px}.rv i{font-style:normal;color:#ffb400;font-size:13px}.rv p{margin:6px 0 0;color:var(--mut);font-size:14px}
+.fab{position:fixed;right:12px;bottom:18px;display:flex;flex-direction:column;gap:8px;z-index:10}.fab.up{bottom:84px}
+.fab a{display:block;text-decoration:none;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:99px;padding:10px 14px;font:700 13.5px inherit;font-family:inherit;box-shadow:0 6px 18px #0004}
+@media(min-width:760px){.fab.up{bottom:18px}}
 </style>
 </head>
 <body>
@@ -120,12 +121,12 @@ input,select{background:#2a2a2a;border-color:#333;color:#fff}
 <header><div class="logo" id="lg"></div><a class="tel" id="tel" href="#">📞 Qo'ng'iroq</a></header>
 
 <div id="home">
- <div class="cd" id="htm"></div>
  <div class="hero"><h1>Foydali mahsulotlar — qulay narxlarda</h1><p>Mahsulotni tanlang, ism va telefon raqamingizni qoldiring. Operator siz bilan bog'lanadi.</p>
- <div class="tags"><span>🚚 Tez yetkazish</span><span>💵 Olganda to'lov</span><span>☎️ Operator yordami</span></div></div>
+ <div class="tags"><span>🚚 Tez yetkazish</span><span>💵 Olganda to'lov</span><span>☎️ Operator yordami</span><span class="tdy" hidden></span></div></div>
  <div class="tools"><input id="q" placeholder="🔍 Mahsulot qidirish..."><select id="so"><option value="0">Mashhur</option><option value="1">Arzonroq</option><option value="2">Qimmatroq</option></select></div>
  <div class="bar" id="bar"></div>
  <div class="grid" id="grid"></div><div class="empty" id="empty">Hech narsa topilmadi</div>
+ <div id="rvs" hidden><h2>Mijozlar fikri</h2><div class="rv" id="rvl"></div></div>
  <h2>Nega bizni tanlashadi?</h2>
  <div class="why"><div><i>🚚</i><b>1–3 kunda yetkazish</b><p>Eshigingizgacha olib boramiz</p></div><div><i>💵</i><b>Olganda to'lang</b><p>Oldindan to'lov shart emas</p></div><div><i>👀</i><b>Ko'rib oling</b><p>Mahsulotni qo'lingizda tekshirasiz</p></div><div><i>☎️</i><b>Operator yordami</b><p>Savollaringizga javob beramiz</p></div></div>
 </div>
@@ -135,31 +136,24 @@ input,select{background:#2a2a2a;border-color:#333;color:#fff}
  <div class="dg"><div class="dimg" id="di"></div>
  <div><small id="dc" style="color:var(--mut)"></small><h1 id="dn"></h1><p id="dd" style="color:var(--mut);margin:0"></p>
   <div class="dprice"><b id="dp"></b><s id="do"></s></div>
-  <div class="cd" id="dtm"></div><div id="dq"></div>
+  <div class="cdd" id="dcd" data-cd data-off="1" hidden></div>
   <button class="btn" id="dbtn" style="font-size:18px;padding:16px">🛒 Buyurtma berish</button>
   <ul class="f" id="df"></ul>
-  <div class="dl" id="dl"></div></div></div>
- <div class="gar"><div><i>👀</i>Ko'rib oling<br><span>Mahsulotni qo'lingizda tekshirasiz</span></div><div><i>💵</i>Olganda to'lang<br><span>Oldindan to'lov shart emas</span></div><div><i>🔄</i>Almashtirish<br><span>Shartlarini operator aytadi</span></div></div>
- <div class="rv" id="dr"></div>
- <div class="qf" id="qf"><h3>Tez buyurtma</h3><div class="sm" id="qpn"></div>
-  <label for="qnm">Ismingiz</label><input id="qnm" placeholder="Masalan: Aziz" autocomplete="name">
-  <label for="qph">Telefon raqamingiz</label><input id="qph" type="tel" inputmode="numeric" placeholder="+998 90 123 45 67" autocomplete="tel">
-  <label for="qrg">Viloyat</label><select id="qrg" style="max-width:100%;width:100%"></select>
-  <div class="err" id="qer"></div><button class="btn" id="qgo">✅ Buyurtma berish</button></div>
+  <div class="info"><span>🚚 Yetkazib berish: 1–3 ish kuni</span><span>💵 To'lov: mahsulotni olganda</span><span>☎️ Buyurtmadan keyin operator bog'lanadi</span><span class="tdy" hidden></span></div></div></div>
  <h2 style="font-size:22px">Savol-javob</h2>
  <details><summary>To'lov qanday amalga oshiriladi?</summary><p style="color:var(--mut)">Mahsulotni olganingizda kuryerga to'laysiz. Oldindan to'lov kerak emas.</p></details>
  <details><summary>Qachon yetkazib berasiz?</summary><p style="color:var(--mut)">Buyurtma tasdiqlangach, hududingizga qarab 1–3 ish kuni ichida.</p></details>
- <details><summary>Mahsulot yoqmasa-chi?</summary><p style="color:var(--mut)">Almashtirish va qaytarish shartlarini operator buyurtma paytida tushuntiradi.</p></details>
+ <details><summary>Mahsulot yoqmasa-chi?</summary><p style="color:var(--mut)" id="qp">Almashtirish va qaytarish shartlarini operator buyurtma paytida tushuntiradi.</p></details>
 </div>
 <footer id="ft"></footer>
 </div>
-<div class="rt" id="rt"></div>
+<div class="fab" id="fab"><a id="fcall" href="#">📞 Qo'ng'iroq</a><a id="ftg" href="#" target="_blank" rel="noopener" hidden>✈️ Telegram</a></div>
 <div class="sticky" id="stk"><button class="btn" id="sbtn" style="margin:0"></button></div>
 
 <div class="ov pm" id="pm"><div class="md"><button class="x" id="pcl" aria-label="Yopish">×</button>
  <span class="bd" id="pb"></span><div class="pi" id="pi"></div><h3 id="pn" style="font-size:21px"></h3>
  <div class="dprice" style="justify-content:center"><b id="pp"></b><s id="po"></s></div>
- <div class="tm cd" id="tm"></div><ul id="pf"></ul>
+ <div class="tm" id="tm" data-cd data-off="1" hidden></div><ul id="pf"></ul>
  <button class="btn" id="pbtn">🛒 Buyurtma berish</button><button class="lk" id="plk">Batafsil ma'lumot</button></div></div>
 <div class="ov" id="ov"><div class="md"><button class="x" id="cl" aria-label="Yopish">×</button>
  <div id="fw"><h3 id="mt"></h3><div class="sm" id="mp"></div>
@@ -191,8 +185,6 @@ var CFG={
  api:"/api/lead",  // Vercel funksiyasi (api/lead.js)
  shop:"Onlayn Do'kon",
  phone:"+998901234567",
- muddat:"1–3 ish kuni",  // yetkazish muddati (mahsulot sahifasida ko'rinadi)
- dnarx:"",  // yetkazish narxi, masalan "Bepul" yoki "25 000 so'm". Bo'sh bo'lsa chiqmaydi
  tg:""   // Telegram username, masalan "alijahon_admin" (oqim bo'lmagan mahsulotlar uchun)
 };
 // oqim — alijahon.uz'dagi shu mahsulot uchun oqim havolangiz. To'ldirilsa, "Buyurtma" tugmasi o'sha havolaga o'tadi.
@@ -240,20 +232,22 @@ function grid(){
  if(s==='1')l.sort(function(a,b){return a.p-b.p});if(s==='2')l.sort(function(a,b){return b.p-a.p});
  $('empty').style.display=l.length?'none':'block';
  $('grid').innerHTML=l.map(function(x){var i=P.indexOf(x),d=disc(x);
-  return '<div class="p" data-v="'+i+'">'+(d?'<span class="sale">-'+d+'%</span>':'')+(x.hit?'<span class="hit">🔥 Mashhur</span>':'')+'<div class="img">'+vis(x)+'</div><div class="b"><small>'+esc(x.c)+'</small><h3>'+esc(x.n)+'</h3><div class="pr"><b>'+fmt(x.p)+'</b>'+(x.o>x.p?'<s>'+fmt(x.o)+'</s>':'')+'</div>'+(x.q>0&&x.q<=30?'<div class="cq">Faqat '+x.q+' ta qoldi</div>':'')+'<button class="btn" data-i="'+i+'">Buyurtma berish</button></div></div>'}).join('')}
+  return '<div class="p" data-v="'+i+'">'+(d?'<span class="sale">-'+d+'%</span>':'')+(x.hit?'<span class="hit">🔥 Mashhur</span>':'')+'<div class="img">'+vis(x)+'</div><div class="b"><small>'+esc(x.c)+'</small><h3>'+esc(x.n)+'</h3><div class="pr"><b>'+fmt(x.p)+'</b>'+(x.o>x.p?'<s>'+fmt(x.o)+'</s>':'')+'</div>'+(d?'<div class="cd" data-cd data-p="⏳ " hidden></div>':'')+'<button class="btn" data-i="'+i+'">Buyurtma berish</button></div></div>'}).join('');tick()}
 $('bar').onclick=function(e){var c=e.target.getAttribute('data-c');if(c){cur=c;bar();grid()}};
 $('q').oninput=grid;$('so').onchange=grid;
 function sid(x){var m=/(\d+)\/?\s*$/.exec(x.oqim||'');return m?m[1]:''}
 function order(x){if(x.oqim&&!(CFG.api&&sid(x))){var w=window.open(x.oqim,'_blank');if(!w)location.href=x.oqim;return}
+ try{var sv=JSON.parse(localStorage.getItem('sv_f')||'{}');if(sv.n&&!$('nm').value)$('nm').value=sv.n;if(sv.t&&(!ph.value||ph.value.length<6))ph.value=sv.t;if(sv.r)$('rg').value=sv.r}catch(e){}
  cp=x;$('mt').textContent=x.n;$('mp').textContent=fmt(x.p);$('fw').style.display='block';$('er').textContent='';$('ov').classList.add('on')}
 $('grid').onclick=function(e){var b=e.target.getAttribute('data-i');if(b!==null){order(P[b]);return}
  var c=e.target.closest('[data-v]');if(c)show(P[c.getAttribute('data-v')])};
 function show(x){cp=x;var d=Math.round((1-x.p/x.o)*100);
  $('di').innerHTML=vis(x);$('dc').textContent=x.c;$('dn').textContent=x.n;$('dd').textContent=x.d;$('dp').textContent=fmt(x.p);$('do').textContent=x.o>x.p?fmt(x.o):'';
  $('df').innerHTML=x.f.map(function(t){return '<li>'+t+'</li>'}).join('');
- $('sbtn').textContent='🛒 Buyurtma berish — '+fmt(x.p);extra(x);
+ $('sbtn').textContent='🛒 Buyurtma berish — '+fmt(x.p);
+ $('dcd').setAttribute('data-off',disc(x)?'0':'1');$('fab').classList.add('up');tick();
  $('home').style.display='none';$('dv').style.display='block';$('stk').style.display='block';window.scrollTo(0,0)}
-function home(){$('dv').style.display='none';$('stk').style.display='none';$('home').style.display='block';window.scrollTo(0,0)}
+function home(){$('fab').classList.remove('up');$('dv').style.display='none';$('stk').style.display='none';$('home').style.display='block';window.scrollTo(0,0)}
 $('bk').onclick=home;$('lg').onclick=home;
 $('dbtn').onclick=function(){order(cp)};$('sbtn').onclick=function(){order(cp)};
 function close(){$('ov').classList.remove('on')}
@@ -262,35 +256,36 @@ function thanks(x,n,t,r){
  $('tyh').textContent='Rahmat, '+(n.split(/\s+/)[0]||'')+'!';
  $('tyi').innerHTML=vis(x);$('tyn').textContent=x.n;$('typ').textContent=fmt(x.p);
  $('tya').textContent=n;$('tyt').textContent=t;$('tyr').textContent=r;
- $('nm').value='';$('ph').value='';$('qnm').value='';$('qph').value='';
  close();$('ty').classList.add('on')}
 $('tyx').onclick=function(){$('ty').classList.remove('on')};
 $('tyb').onclick=function(){$('ty').classList.remove('on');home()};
 $('ty').onclick=function(e){if(e.target===$('ty'))$('ty').classList.remove('on')};
 $('cl').onclick=close;$('ov').onclick=function(e){if(e.target===$('ov'))close()};
-function mask(el){el.oninput=function(){var v=el.value.replace(/\D/g,'');if(v.indexOf('998')===0)v=v.slice(3);v=v.slice(0,9);
- var o='+998';if(v.length)o+=' '+v.slice(0,2);if(v.length>2)o+=' '+v.slice(2,5);if(v.length>5)o+=' '+v.slice(5,7);if(v.length>7)o+=' '+v.slice(7,9);el.value=o};
- el.onfocus=function(){if(!el.value)el.value='+998 '}}
-var ph=$('ph');mask(ph);mask($('qph'));$('qrg').innerHTML=$('rg').innerHTML;
-function send(n,t,r,btn,er,label){
- if(n.length<2){er.textContent='Iltimos, ismingizni kiriting';return}
- if(t.replace(/\D/g,'').length<12){er.textContent="Telefon raqamni to'liq kiriting";return}
- function done(){thanks(cp,n,t,r)}
+var ph=$('ph');
+$('fw').onkeydown=function(e){if(e.key==='Enter'&&e.target.tagName!=='SELECT'){e.preventDefault();$('go').click()}};
+ph.oninput=function(){var v=ph.value.replace(/\D/g,'');if(v.indexOf('998')===0)v=v.slice(3);v=v.slice(0,9);
+ var o='+998';if(v.length)o+=' '+v.slice(0,2);if(v.length>2)o+=' '+v.slice(2,5);if(v.length>5)o+=' '+v.slice(5,7);if(v.length>7)o+=' '+v.slice(7,9);ph.value=o};
+ph.onfocus=function(){if(!ph.value)ph.value='+998 '};
+$('go').onclick=function(){
+ var n=$('nm').value.trim(),t=ph.value,r=$('rg').value,btn=$('go');
+ if(n.length<2){$('er').textContent='Iltimos, ismingizni kiriting';return}
+ if(t.replace(/\D/g,'').length<12){$('er').textContent="Telefon raqamni to'liq kiriting";return}
+ function done(){
+  try{localStorage.setItem('sv_f',JSON.stringify({n:n,t:t,r:r}))}catch(e){}
+  thanks(cp,n,t,r)}
  var st=sid(cp);
  if(CFG.api&&st){
-  btn.disabled=true;btn.textContent='Yuborilmoqda...';er.textContent='';
+  btn.disabled=true;btn.textContent='Yuborilmoqda...';$('er').textContent='';
   fetch(CFG.api,{method:'POST',headers:{'Content-Type':'application/json'},
-   body:JSON.stringify({full_name:n,phone_number:'+'+t.replace(/\D/g,''),stream:st,region:r})})
+   body:JSON.stringify({full_name:n,phone_number:'+'+t.replace(/\D/g,''),stream:st})})
   .then(function(res){return res.json().catch(function(){return{}}).then(function(j){return{ok:res.ok,s:res.status,j:j}})})
-  .then(function(o){btn.disabled=false;btn.textContent=label;
-   if(o.ok)done();else er.textContent="Yuborib bo'lmadi ["+o.s+"] "+JSON.stringify(o.j).slice(0,220)+" — "+CFG.phone})  /* DEBUG: sinovdan keyin [..] va JSON qismini olib tashlaymiz */
-  .catch(function(){btn.disabled=false;btn.textContent=label;er.textContent="Internet xatosi. Qayta urinib ko'ring"});
+  .then(function(o){btn.disabled=false;btn.textContent='✅ Buyurtmani tasdiqlash';
+   if(o.ok)done();else $('er').textContent=o.s===400?"Ism yoki telefon noto'g'ri. Tekshirib, qayta urinib ko'ring":"Hozir yuborib bo'lmadi. Qayta urinib ko'ring yoki qo'ng'iroq qiling: "+CFG.phone})
+  .catch(function(){btn.disabled=false;btn.textContent='✅ Buyurtmani tasdiqlash';$('er').textContent="Internet xatosi. Qayta urinib ko'ring"});
   return}
  var msg="🛒 Yangi buyurtma\nMahsulot: "+cp.n+"\nNarx: "+fmt(cp.p)+"\nIsm: "+n+"\nTel: "+t+"\nHudud: "+r;
  done();
- if(CFG.tg)window.open('https://t.me/'+CFG.tg.replace('@','')+'?text='+encodeURIComponent(msg),'_blank')}
-$('go').onclick=function(){send($('nm').value.trim(),ph.value,$('rg').value,$('go'),$('er'),'✅ Buyurtmani tasdiqlash')};
-$('qgo').onclick=function(){send($('qnm').value.trim(),$('qph').value,$('qrg').value,$('qgo'),$('qer'),'✅ Buyurtma berish')};
+ if(CFG.tg)window.open('https://t.me/'+CFG.tg.replace('@','')+'?text='+encodeURIComponent(msg),'_blank')};
 // Mahsulotlar admin panelidan (/api/products) olinadi; ishlamasa fayldagi ro'yxat ishlatiladi
 function route(){try{var m=/^#p(\d+)$/.exec(location.hash);if(m&&P[m[1]-1]){var x=P[m[1]-1];show(x);$('bk').style.display='none';promo(x)}}catch(e){}}
 function loadP(){
@@ -299,37 +294,49 @@ function loadP(){
   .then(function(d){clearTimeout(tm);return Array.isArray(d)?d:null}).catch(function(){return null})}
 // Reklama havolasi: ...#p1, #p2, ... — mijoz to'g'ridan-to'g'ri shu mahsulot sahifasiga tushadi
 loadP().then(function(d){setP(d||P);bar();grid();route()});
-// AKSIYA tugash vaqti, masalan "2026-10-31T23:59". Bo'sh qoldirsangiz taymer chiqmaydi (yolg'on taymer qo'ymang).
+// ===== CHEGIRMA TAYMERI =====
+// AKSIYA_TUGASH: aniq tugash sanasi, masalan "2026-10-31T23:59" (Toshkent vaqti). Bo'sh bo'lsa va AKSIYA_KUNLIK=true bo'lsa,
+// taymer har kuni Toshkent vaqti bilan 00:00 gacha sanaydi va ertasi kuni qayta boshlanadi.
+// Ikkalasi ham bo'sh/false bo'lsa taymer chiqmaydi. Chegirma haqiqatan shu vaqtda tugashi/yangilanishi kerak.
 var AKSIYA_TUGASH="";
+var AKSIYA_KUNLIK=true;
+function aksEnd(){
+ if(AKSIYA_TUGASH){var q=AKSIYA_TUGASH;if(q.length===10)q+="T23:59:59";if(!/(Z|[+-]\d\d:?\d\d)$/.test(q))q+="+05:00";var e=new Date(q).getTime();return isNaN(e)?0:e}
+ if(AKSIYA_KUNLIK){var T=5*36e5,D=864e5;return Math.floor((Date.now()+T)/D+1)*D-T}
+ return 0}
+function pad(n){return n<10?"0"+n:""+n}
+function tick(){var e=aksEnd(),d=e-Date.now(),on=e&&d>0,t="",els=document.querySelectorAll('[data-cd]');
+ if(on){var k=d/864e5|0,h=d%864e5/36e5|0,m=d%36e5/6e4|0,c=d%6e4/1e3|0;t=(k?k+" kun ":"")+pad(h)+":"+pad(m)+":"+pad(c)}
+ for(var i=0;i<els.length;i++){var el=els[i];el.hidden=!on||el.getAttribute('data-off')==='1';if(on)el.textContent=(el.getAttribute('data-p')||"⏳ Chegirma tugashiga: ")+t}}
+setInterval(tick,1000);
+
+// ===== MIJOZ SHARHLARI (faqat HAQIQIY sharhlarni yozing; bo'sh bo'lsa bo'lim ko'rinmaydi) =====
+// Namuna: {n:"Aziz, Toshkent",t:"Tez yetkazib berishdi, mahsulot yoqdi",s:5}
+var SHARHLAR=[];
+(function(){if(!SHARHLAR.length)return;
+ $('rvl').innerHTML=SHARHLAR.map(function(r){return '<div><b>'+esc(r.n)+'</b><i>'+"★★★★★".slice(0,Math.max(1,Math.min(5,r.s||5)))+'</i><p>'+esc(r.t)+'</p></div>'}).join('');$('rvs').hidden=false})();
+
+// ===== QAYTARISH SHARTI (haqiqiy shartingizni yozing; bo'sh bo'lsa eski matn qoladi) =====
+// Masalan: "Mahsulot sifatsiz yoki nuqsonli bo'lsa, 3 kun ichida almashtirib beramiz."
+var QAYTARISH="";
+if(QAYTARISH)$('qp').textContent=QAYTARISH;
+
+// ===== BUGUN NECHTA BUYURTMA (haqiqiy hisoblagich, /api/today) =====
+fetch('/api/today').then(function(r){return r.ok?r.json():null}).then(function(d){
+ if(d&&d.n>=5){var l=document.querySelectorAll('.tdy');for(var i=0;i<l.length;i++){l[i].textContent='🔥 Bugun '+d.n+' kishi buyurtma berdi';l[i].hidden=false}}}).catch(function(){});
+
+// ===== ALOQA TUGMALARI =====
+$('fcall').href='tel:'+CFG.phone;
+if(CFG.tg){$('ftg').href='https://t.me/'+CFG.tg.replace('@','');$('ftg').hidden=false}
+
 function promo(x){
  $('pb').textContent=disc(x)?'🔥 AKSIYA −'+disc(x)+'%':'🔥 TAKLIF';$('pi').innerHTML=vis(x);$('pn').textContent=x.n;
  $('pp').textContent=fmt(x.p);$('po').textContent=x.o>x.p?fmt(x.o):'';
  $('pf').innerHTML=x.f.slice(0,3).map(function(t){return '<li>✅ '+t+'</li>'}).join('');
- tick();
+ $('tm').setAttribute('data-off',disc(x)?'0':'1');tick();
  $('pm').classList.add('on');
  $('pcl').onclick=$('plk').onclick=function(){$('pm').classList.remove('on')};
  $('pbtn').onclick=function(){$('pm').classList.remove('on');order(x)}}
-function p2(n){return n<10?'0'+n:n}
-function tick(){var end=AKSIYA_TUGASH?new Date(AKSIYA_TUGASH).getTime():0,d=end-Date.now(),els=document.querySelectorAll('.cd');
- for(var i=0;i<els.length;i++){var e=els[i];if(!end||isNaN(d)||d<=0){e.style.display='none';continue}
-  e.textContent='⏳ Aksiya tugashiga: '+p2(d/36e5|0)+':'+p2(d%36e5/6e4|0)+':'+p2(d%6e4/1e3|0);e.style.display='block'}}
-setInterval(tick,1000);tick();
-function extra(x){
- $('dl').innerHTML='<div><span>🚚 Yetkazish muddati</span><b>'+esc(CFG.muddat)+'</b></div>'+(CFG.dnarx?'<div><span>📦 Yetkazish narxi</span><b>'+esc(CFG.dnarx)+'</b></div>':'')+"<div><span>💵 To'lov</span><b>Olganda</b></div><div><span>☎️ Aloqa</span><b>Operator bog'lanadi</b></div>";
- $('dq').innerHTML=x.q>0&&x.q<=30?'<div class="qty">🔥 Faqat '+x.q+' ta qoldi</div><div class="qb"><i style="width:'+Math.max(6,Math.min(100,x.q*3))+'%"></i></div>':'';
- var r=x.rv||[],sum=0;r.forEach(function(v){sum+=v.r});
- $('dr').innerHTML=r.length?'<h2>Mijozlar fikri</h2><div class="av">★ '+(sum/r.length).toFixed(1)+' · '+r.length+' ta sharh</div>'+r.map(function(v){return '<div class="rc"><b>'+esc(v.a)+'</b>'+(v.s?' <small style="color:var(--mut)">· '+esc(v.s)+'</small>':'')+'<div class="st">'+Array(v.r+1).join('★')+'</div><p>'+esc(v.t)+'</p></div>'}).join(''):'';
- $('qpn').textContent=x.n+' — '+fmt(x.p);$('qer').textContent='';tick()}
-// Haqiqiy oxirgi buyurtmalar (ism va telefonsiz). Ma'lumot bo'lmasa hech narsa chiqmaydi.
-function ago(t){var m=Math.round((Date.now()-t)/6e4);return m<1?'hozirgina':m<60?m+' daqiqa oldin':m<1440?Math.round(m/60)+' soat oldin':Math.round(m/1440)+' kun oldin'}
-fetch('/api/recent').then(function(r){return r.ok?r.json():[]}).then(function(a){
- if(!Array.isArray(a)||!a.length)return;var i=0,t=$('rt');
- function nxt(){var n=a.length,o=null,pn='';
-  for(var j=0;j<n&&!o;j++){var c=a[i++%n];for(var k=0;k<P.length;k++)if(sid(P[k])===c.s){o=c;pn=P[k].n}}
-  if(!o)return;
-  t.innerHTML='📦 Yangi buyurtma'+(o.r?': <b>'+esc(o.r)+'</b>':'')+'<br><span style="color:var(--mut)">'+esc(pn)+' · '+ago(o.t)+'</span>';
-  t.style.display='block';setTimeout(function(){t.style.display='none';setTimeout(nxt,8000)},5000)}
- setTimeout(nxt,6000)}).catch(function(){});
 </script>
 </body>
 </html>
