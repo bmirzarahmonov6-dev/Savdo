@@ -163,7 +163,10 @@ var P=[
   f:["USB orqali zaryadlanadi","Ish joyi, sport zali va safar uchun","Yuvish oson","Tez maydalaydi"],oqim:""},
  {n:"Yuz uchun massaj roller",c:"Go'zallik",p:79000,o:149000,e:"🧴",hit:0,
   d:"Kundalik yuz parvarishi uchun qulay massaj roller. Krem yoki serum bilan foydalaning.",
-  f:["Kundalik parvarishga qulay","Yengil va ixcham","Krem bilan birga ishlatiladi","Sovitib ishlatish mumkin"],oqim:""}
+  f:["Kundalik parvarishga qulay","Yengil va ixcham","Krem bilan birga ishlatiladi","Sovitib ishlatish mumkin"],oqim:""},
+ {n:"Muallimi Soniy (Tajvid qoidalari bilan)",c:"Kitoblar",p:55999,o:59000,e:"📖",hit:0,
+  d:"Arab tili va tajvid qoidalarini o'rganib, Qur'on o'qishni o'rganish uchun kitob. QR-kod orqali audio ham eshitish mumkin.",
+  f:["Arab tili va tajvid qoidalari","QR-kod orqali audio (Ustoz Shayx Alijon qori)","O'zbekiston bo'ylab yetkazib berish","Olganda to'lov"],oqim:"https://alijahon.uz/oqim/83246"}
 ];
 // =============================================================================
 var $=function(i){return document.getElementById(i)};
@@ -182,7 +185,7 @@ function grid(){
   return '<div class="p" data-v="'+i+'"><span class="sale">-'+d+'%</span>'+(x.hit?'<span class="hit">🔥 Mashhur</span>':'')+'<div class="img">'+x.e+'</div><div class="b"><small>'+x.c+'</small><h3>'+x.n+'</h3><div class="pr"><b>'+fmt(x.p)+'</b><s>'+fmt(x.o)+'</s></div><button class="btn" data-i="'+i+'">Buyurtma berish</button></div></div>'}).join('')}
 $('bar').onclick=function(e){var c=e.target.getAttribute('data-c');if(c){cur=c;bar();grid()}};
 $('q').oninput=grid;$('so').onchange=grid;
-function order(x){if(x.oqim){window.open(x.oqim,'_blank');return}
+function order(x){if(x.oqim){var w=window.open(x.oqim,'_blank');if(!w)location.href=x.oqim;return}
  cp=x;$('mt').textContent=x.n;$('mp').textContent=fmt(x.p);$('fw').style.display='block';$('ok').style.display='none';$('er').textContent='';$('ov').classList.add('on')}
 $('grid').onclick=function(e){var b=e.target.getAttribute('data-i');if(b!==null){order(P[b]);return}
  var c=e.target.closest('[data-v]');if(c)show(P[c.getAttribute('data-v')])};
