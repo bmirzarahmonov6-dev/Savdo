@@ -80,6 +80,25 @@ input,select{background:#2a2a2a;border-color:#333;color:#fff}
 .sticky{background:#181818}
 .why div,details{background:#222}
 .pim{width:100%;height:100%;object-fit:cover;display:block}.pm .pi .pim{width:130px;height:130px;border-radius:20px}
+.ty{z-index:40;background:#000c}
+.ty .md{max-width:440px;max-height:94vh;overflow:auto;text-align:center;padding-top:30px;animation:tyup .35s ease-out}
+@keyframes tyup{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.tyc{width:92px;height:92px;margin:0 auto 14px}.tyc svg{width:100%;height:100%}
+.tc{fill:#2a3a2f;stroke:#6fcf97;stroke-width:2;stroke-dasharray:151;stroke-dashoffset:151;animation:tydraw .6s ease-out forwards}
+.tk{fill:none;stroke:#6fcf97;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;animation:tydraw .4s .5s ease-out forwards}
+@keyframes tydraw{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.tc,.tk{animation:none;stroke-dashoffset:0}.ty .md{animation:none}}
+.ty h2{margin:0 0 6px;font-size:24px}
+.tys{color:var(--mut);margin:0 0 16px;font-size:15px}
+.tyk{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:10px;text-align:left;margin-bottom:10px}
+.tyi{width:56px;height:56px;border-radius:12px;background:#322d5c;display:grid;place-items:center;font-size:30px;overflow:hidden;flex:none}
+.tyk b{display:block;line-height:1.25;font-size:15px}.tyk span{color:var(--pr);font-weight:700;font-size:15px}
+.tyd{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:6px 14px;text-align:left;margin-bottom:14px}
+.tyd div{display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:7px 0;border-bottom:1px solid var(--bd)}.tyd div:last-child{border:0}
+.tyd span{color:var(--mut)}.tyd b{text-align:right}
+.tyst{text-align:left;margin:0 0 16px}.tyst .h{font-weight:700;font-size:14px;margin-bottom:10px}
+.tyst p{display:flex;gap:10px;margin:0 0 10px;font-size:14px;line-height:1.4}
+.tyst i{font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--pr);color:#181818;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:none}
 .okc{width:64px;height:64px;border-radius:50%;background:#2a3a2f;color:#6fcf97;display:flex;align-items:center;justify-content:center;font-size:34px;margin:4px auto 10px}
 .okb h3{font-size:19px}.okb .sm2{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:12px 14px;text-align:left;margin:14px 0}
 .okb .sm2 div{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:3px 0}.okb .sm2 div span:first-child{color:var(--mut)}
@@ -131,11 +150,22 @@ input,select{background:#2a2a2a;border-color:#333;color:#fff}
   <label for="rg">Viloyat</label>
   <select id="rg" style="max-width:100%;width:100%"><option>Toshkent shahri</option><option>Toshkent viloyati</option><option>Samarqand</option><option>Buxoro</option><option>Farg'ona</option><option>Andijon</option><option>Namangan</option><option>Qashqadaryo</option><option>Surxondaryo</option><option>Xorazm</option><option>Navoiy</option><option>Jizzax</option><option>Sirdaryo</option><option>Qoraqalpog'iston</option></select>
   <div class="err" id="er"></div><button class="btn" id="go">✅ Buyurtmani tasdiqlash</button></div>
- <div class="okb" id="ok"><div class="okc">✓</div><h3>Buyurtmangiz qabul qilindi</h3><p style="color:var(--mut);margin:0">Operator tez orada qo'ng'iroq qiladi</p>
-<div class="sm2"><div><span>Mahsulot</span><b id="so1"></b></div><div><span>Narxi</span><b id="so2" style="color:var(--pr)"></b></div><div><span>Ism</span><span id="so3" style="color:var(--tx)"></span></div><div><span>Telefon</span><span id="so4" style="color:var(--tx)"></span></div><div><span>Hudud</span><span id="so5" style="color:var(--tx)"></span></div><div><span>To'lov</span><span style="color:var(--tx)">Olganda</span></div></div>
-<div class="stp"><b style="background:none;color:var(--tx);width:auto;height:auto;font-size:14px;margin-bottom:8px;display:block">Keyin nima bo'ladi</b><p><b>1</b><span>Operator raqamingizga qo'ng'iroq qiladi. Telefonni yoningizda saqlang</span></p><p><b>2</b><span>Buyurtmani tasdiqlaysiz va manzilni aytasiz</span></p><p><b>3</b><span>Mahsulot 1-3 ish kunida yetkaziladi, olganda to'laysiz</span></p></div>
-<button class="btn" id="cl2">Boshqa mahsulotlar</button></div>
+ </div></div>
+
+<div class="ov ty" id="ty"><div class="md">
+ <button class="x" id="tyx" aria-label="Yopish">×</button>
+ <div class="tyc"><svg viewBox="0 0 52 52"><circle class="tc" cx="26" cy="26" r="24"/><path class="tk" d="M14 27l8 8 16-17"/></svg></div>
+ <h2 id="tyh">Rahmat!</h2>
+ <p class="tys">Buyurtmangiz qabul qilindi. Operator tez orada siz bilan bog'lanadi.</p>
+ <div class="tyk"><div class="tyi" id="tyi"></div><div style="min-width:0"><b id="tyn"></b><span id="typ"></span></div></div>
+ <div class="tyd"><div><span>Ism</span><b id="tya"></b></div><div><span>Telefon</span><b id="tyt"></b></div><div><span>Hudud</span><b id="tyr"></b></div><div><span>To'lov</span><b>Olganda</b></div></div>
+ <div class="tyst"><div class="h">Keyin nima bo'ladi</div>
+  <p><i>1</i><span>Operator raqamingizga qo'ng'iroq qiladi. Telefonni yoningizda saqlang</span></p>
+  <p><i>2</i><span>Buyurtmani tasdiqlaysiz va manzilni aytasiz</span></p>
+  <p><i>3</i><span>Mahsulot 1–3 ish kunida yetkaziladi, olganda to'laysiz</span></p></div>
+ <button class="btn" id="tyb">Boshqa mahsulotlar</button>
 </div></div>
+
 
 <script>
 // ================= SOZLAMALAR (oxirida shu yerni to'ldiramiz) =================
@@ -195,7 +225,7 @@ $('bar').onclick=function(e){var c=e.target.getAttribute('data-c');if(c){cur=c;b
 $('q').oninput=grid;$('so').onchange=grid;
 function sid(x){var m=/(\d+)\/?\s*$/.exec(x.oqim||'');return m?m[1]:''}
 function order(x){if(x.oqim&&!(CFG.api&&sid(x))){var w=window.open(x.oqim,'_blank');if(!w)location.href=x.oqim;return}
- cp=x;$('mt').textContent=x.n;$('mp').textContent=fmt(x.p);$('fw').style.display='block';$('ok').style.display='none';$('er').textContent='';$('ov').classList.add('on')}
+ cp=x;$('mt').textContent=x.n;$('mp').textContent=fmt(x.p);$('fw').style.display='block';$('er').textContent='';$('ov').classList.add('on')}
 $('grid').onclick=function(e){var b=e.target.getAttribute('data-i');if(b!==null){order(P[b]);return}
  var c=e.target.closest('[data-v]');if(c)show(P[c.getAttribute('data-v')])};
 function show(x){cp=x;var d=Math.round((1-x.p/x.o)*100);
@@ -207,7 +237,17 @@ function home(){$('dv').style.display='none';$('stk').style.display='none';$('ho
 $('bk').onclick=home;$('lg').onclick=home;
 $('dbtn').onclick=function(){order(cp)};$('sbtn').onclick=function(){order(cp)};
 function close(){$('ov').classList.remove('on')}
-$('cl').onclick=close;$('cl2').onclick=function(){close();home()};$('ov').onclick=function(e){if(e.target===$('ov'))close()};
+// Buyurtmadan keyingi alohida "Rahmat" oynasi
+function thanks(x,n,t,r){
+ $('tyh').textContent='Rahmat, '+(n.split(/\s+/)[0]||'')+'!';
+ $('tyi').innerHTML=vis(x);$('tyn').textContent=x.n;$('typ').textContent=fmt(x.p);
+ $('tya').textContent=n;$('tyt').textContent=t;$('tyr').textContent=r;
+ $('nm').value='';$('ph').value='';
+ close();$('ty').classList.add('on')}
+$('tyx').onclick=function(){$('ty').classList.remove('on')};
+$('tyb').onclick=function(){$('ty').classList.remove('on');home()};
+$('ty').onclick=function(e){if(e.target===$('ty'))$('ty').classList.remove('on')};
+$('cl').onclick=close;$('ov').onclick=function(e){if(e.target===$('ov'))close()};
 var ph=$('ph');
 ph.oninput=function(){var v=ph.value.replace(/\D/g,'');if(v.indexOf('998')===0)v=v.slice(3);v=v.slice(0,9);
  var o='+998';if(v.length)o+=' '+v.slice(0,2);if(v.length>2)o+=' '+v.slice(2,5);if(v.length>5)o+=' '+v.slice(5,7);if(v.length>7)o+=' '+v.slice(7,9);ph.value=o};
@@ -217,8 +257,7 @@ $('go').onclick=function(){
  if(n.length<2){$('er').textContent='Iltimos, ismingizni kiriting';return}
  if(t.replace(/\D/g,'').length<12){$('er').textContent="Telefon raqamni to'liq kiriting";return}
  function done(){
-  $('so1').textContent=cp.n;$('so2').textContent=fmt(cp.p);$('so3').textContent=n;$('so4').textContent=t;$('so5').textContent=r;
-  $('fw').style.display='none';$('ok').style.display='block'}
+  thanks(cp,n,t,r)}
  var st=sid(cp);
  if(CFG.api&&st){
   btn.disabled=true;btn.textContent='Yuborilmoqda...';$('er').textContent='';
