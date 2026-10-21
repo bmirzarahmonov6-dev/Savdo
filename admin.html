@@ -100,6 +100,10 @@ label{display:block;font-weight:600;font-size:14px;margin:12px 0 5px}
  </div>
  <label>Tavsif</label><textarea id="d" maxlength="1000"></textarea>
  <label>Xususiyatlar (har qatorda bitta)</label><textarea id="f"></textarea>
+ <label>Omborda qoldi (ixtiyoriy)</label><input id="qty" inputmode="numeric" placeholder="Masalan: 7. Bo'sh qolsa yozuv chiqmaydi">
+ <p class="hint">Faqat haqiqiy qoldiqni yozing. 30 dan kam bo'lsa "Faqat N ta qoldi" chiqadi.</p>
+ <label>Mijoz sharhlari (haqiqiylari, har qatorda bitta)</label><textarea id="rv" placeholder="Aziza | Samarqand | 5 | Ikki kunda keldi, juda yaxshi"></textarea>
+ <p class="hint">Format: Ism | Shahar | Baho (1-5) | Matn</p>
  <div class="row" style="margin-top:12px;gap:18px">
   <label style="margin:0;display:flex;gap:8px;align-items:center"><input id="hit" type="checkbox" style="width:auto"> 🔥 Mashhur</label>
   <label style="margin:0;display:flex;gap:8px;align-items:center"><input id="act" type="checkbox" style="width:auto"> Faol</label>
@@ -174,6 +178,7 @@ function openForm(i){
  $('ft').textContent=i>=0?'Tahrirlash':'Yangi mahsulot';
  $('n').value=x.n||'';$('oqim').value=oid(x)||'';$('p').value=x.p||'';$('o').value=x.o||'';$('c').value=x.c||'';
  $('e').value=x.e||'';$('im').value=x.im||'';$('d').value=x.d||'';$('f').value=(x.f||[]).join('\n');
+ $('qty').value=x.q||'';$('rv').value=(x.rv||[]).map(function(r){return [r.a,r.s,r.r,r.t].join(' | ')}).join('\n');
  $('hit').checked=!!x.hit;$('act').checked=x.active!==false;$('ferr').textContent='';$('uh').textContent='Rasm avtomatik kichraytiriladi. Kvadrat rasm yaxshi chiqadi.';pv();
  $('cats').innerHTML=items.map(function(y){return y.c}).filter(function(v,k,a){return v&&a.indexOf(v)===k}).map(function(v){return '<option value="'+esc(v)+'">'}).join('');
  $('ov').classList.add('on')}
@@ -192,7 +197,9 @@ $('fs').onclick=function(){
  if(er){$('ferr').textContent=er;return}
  var x={n:n,c:$('c').value.trim(),p:p,o:o,e:$('e').value.trim(),im:im,d:$('d').value.trim(),
   f:$('f').value.split('\n').map(function(t){return t.trim()}).filter(Boolean),
-  oqim:'https://alijahon.uz/oqim/'+m[1],hit:$('hit').checked,active:$('act').checked};
+  oqim:'https://alijahon.uz/oqim/'+m[1],hit:$('hit').checked,active:$('act').checked,
+  q:parseInt($('qty').value.replace(/\D/g,''),10)||0,
+  rv:$('rv').value.split('\n').map(function(l){var a=l.split('|').map(function(t){return t.trim()});var st=parseInt(a[2],10);return{a:a[0]||'',s:a[1]||'',r:st>=1&&st<=5?st:5,t:a.slice(3).join(' | ')}}).filter(function(r){return r.a&&r.t})};
  if(editing>=0)items[editing]=x;else items.push(x);
  $('ov').classList.remove('on');render();save()};
 

@@ -104,6 +104,14 @@ input,select{background:#2a2a2a;border-color:#333;color:#fff}
 .okb .sm2 div{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:3px 0}.okb .sm2 div span:first-child{color:var(--mut)}
 .okb .stp{text-align:left;font-size:13px;line-height:1.45;margin:0 0 14px}.okb .stp p{display:flex;gap:10px;margin:0 0 8px}
 .okb .stp b{width:22px;height:22px;border-radius:50%;background:var(--pr);color:#181818;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none}
+.cd{display:none;text-align:center;font-weight:700;color:var(--pr);background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:10px;margin:10px 0}
+.qty{color:#ff7a7a;font-weight:700;font-size:13.5px;margin:10px 0 6px}.qb{height:6px;background:var(--bd);border-radius:3px;overflow:hidden;margin-bottom:10px}.qb i{display:block;height:100%;background:#ff7a7a;border-radius:3px}
+.cq{color:#ff7a7a;font-size:12px;font-weight:700}
+.gar{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:14px 0}.gar div{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;text-align:center;font-size:13.5px}.gar i{font-style:normal;font-size:24px;display:block}.gar span{color:var(--mut);font-size:12.5px}
+.dl{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:4px 14px;margin:14px 0}.dl div{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--bd);font-size:14.5px}.dl div:last-child{border:0}.dl span{color:var(--mut)}
+.rv h2{margin:24px 0 6px;font-size:22px}.rv .av{text-align:center;color:var(--mut);margin-bottom:12px;font-size:14px}.rc{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px 14px;margin-bottom:8px}.rc .st{color:#ffd24a;letter-spacing:2px;font-size:14px}.rc p{margin:6px 0 0;font-size:14.5px}
+.qf{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:16px;margin:18px 0}.qf h3{margin:0 0 2px}.qf .sm{color:var(--pr);font-weight:700;margin-bottom:6px}
+.rt{position:fixed;left:12px;bottom:84px;max-width:290px;background:#222;border:1px solid var(--bd);border-radius:14px;padding:10px 14px;font-size:13.5px;z-index:15;display:none}
 </style>
 </head>
 <body>
@@ -112,6 +120,7 @@ input,select{background:#2a2a2a;border-color:#333;color:#fff}
 <header><div class="logo" id="lg"></div><a class="tel" id="tel" href="#">📞 Qo'ng'iroq</a></header>
 
 <div id="home">
+ <div class="cd" id="htm"></div>
  <div class="hero"><h1>Foydali mahsulotlar — qulay narxlarda</h1><p>Mahsulotni tanlang, ism va telefon raqamingizni qoldiring. Operator siz bilan bog'lanadi.</p>
  <div class="tags"><span>🚚 Tez yetkazish</span><span>💵 Olganda to'lov</span><span>☎️ Operator yordami</span></div></div>
  <div class="tools"><input id="q" placeholder="🔍 Mahsulot qidirish..."><select id="so"><option value="0">Mashhur</option><option value="1">Arzonroq</option><option value="2">Qimmatroq</option></select></div>
@@ -126,9 +135,17 @@ input,select{background:#2a2a2a;border-color:#333;color:#fff}
  <div class="dg"><div class="dimg" id="di"></div>
  <div><small id="dc" style="color:var(--mut)"></small><h1 id="dn"></h1><p id="dd" style="color:var(--mut);margin:0"></p>
   <div class="dprice"><b id="dp"></b><s id="do"></s></div>
+  <div class="cd" id="dtm"></div><div id="dq"></div>
   <button class="btn" id="dbtn" style="font-size:18px;padding:16px">🛒 Buyurtma berish</button>
   <ul class="f" id="df"></ul>
-  <div class="info"><span>🚚 Yetkazib berish: 1–3 ish kuni</span><span>💵 To'lov: mahsulotni olganda</span><span>☎️ Buyurtmadan keyin operator bog'lanadi</span></div></div></div>
+  <div class="dl" id="dl"></div></div></div>
+ <div class="gar"><div><i>👀</i>Ko'rib oling<br><span>Mahsulotni qo'lingizda tekshirasiz</span></div><div><i>💵</i>Olganda to'lang<br><span>Oldindan to'lov shart emas</span></div><div><i>🔄</i>Almashtirish<br><span>Shartlarini operator aytadi</span></div></div>
+ <div class="rv" id="dr"></div>
+ <div class="qf" id="qf"><h3>Tez buyurtma</h3><div class="sm" id="qpn"></div>
+  <label for="qnm">Ismingiz</label><input id="qnm" placeholder="Masalan: Aziz" autocomplete="name">
+  <label for="qph">Telefon raqamingiz</label><input id="qph" type="tel" inputmode="numeric" placeholder="+998 90 123 45 67" autocomplete="tel">
+  <label for="qrg">Viloyat</label><select id="qrg" style="max-width:100%;width:100%"></select>
+  <div class="err" id="qer"></div><button class="btn" id="qgo">✅ Buyurtma berish</button></div>
  <h2 style="font-size:22px">Savol-javob</h2>
  <details><summary>To'lov qanday amalga oshiriladi?</summary><p style="color:var(--mut)">Mahsulotni olganingizda kuryerga to'laysiz. Oldindan to'lov kerak emas.</p></details>
  <details><summary>Qachon yetkazib berasiz?</summary><p style="color:var(--mut)">Buyurtma tasdiqlangach, hududingizga qarab 1–3 ish kuni ichida.</p></details>
@@ -136,12 +153,13 @@ input,select{background:#2a2a2a;border-color:#333;color:#fff}
 </div>
 <footer id="ft"></footer>
 </div>
+<div class="rt" id="rt"></div>
 <div class="sticky" id="stk"><button class="btn" id="sbtn" style="margin:0"></button></div>
 
 <div class="ov pm" id="pm"><div class="md"><button class="x" id="pcl" aria-label="Yopish">×</button>
  <span class="bd" id="pb"></span><div class="pi" id="pi"></div><h3 id="pn" style="font-size:21px"></h3>
  <div class="dprice" style="justify-content:center"><b id="pp"></b><s id="po"></s></div>
- <div class="tm" id="tm"></div><ul id="pf"></ul>
+ <div class="tm cd" id="tm"></div><ul id="pf"></ul>
  <button class="btn" id="pbtn">🛒 Buyurtma berish</button><button class="lk" id="plk">Batafsil ma'lumot</button></div></div>
 <div class="ov" id="ov"><div class="md"><button class="x" id="cl" aria-label="Yopish">×</button>
  <div id="fw"><h3 id="mt"></h3><div class="sm" id="mp"></div>
@@ -173,6 +191,8 @@ var CFG={
  api:"/api/lead",  // Vercel funksiyasi (api/lead.js)
  shop:"Onlayn Do'kon",
  phone:"+998901234567",
+ muddat:"1–3 ish kuni",  // yetkazish muddati (mahsulot sahifasida ko'rinadi)
+ dnarx:"",  // yetkazish narxi, masalan "Bepul" yoki "25 000 so'm". Bo'sh bo'lsa chiqmaydi
  tg:""   // Telegram username, masalan "alijahon_admin" (oqim bo'lmagan mahsulotlar uchun)
 };
 // oqim — alijahon.uz'dagi shu mahsulot uchun oqim havolangiz. To'ldirilsa, "Buyurtma" tugmasi o'sha havolaga o'tadi.
@@ -220,7 +240,7 @@ function grid(){
  if(s==='1')l.sort(function(a,b){return a.p-b.p});if(s==='2')l.sort(function(a,b){return b.p-a.p});
  $('empty').style.display=l.length?'none':'block';
  $('grid').innerHTML=l.map(function(x){var i=P.indexOf(x),d=disc(x);
-  return '<div class="p" data-v="'+i+'">'+(d?'<span class="sale">-'+d+'%</span>':'')+(x.hit?'<span class="hit">🔥 Mashhur</span>':'')+'<div class="img">'+vis(x)+'</div><div class="b"><small>'+esc(x.c)+'</small><h3>'+esc(x.n)+'</h3><div class="pr"><b>'+fmt(x.p)+'</b>'+(x.o>x.p?'<s>'+fmt(x.o)+'</s>':'')+'</div><button class="btn" data-i="'+i+'">Buyurtma berish</button></div></div>'}).join('')}
+  return '<div class="p" data-v="'+i+'">'+(d?'<span class="sale">-'+d+'%</span>':'')+(x.hit?'<span class="hit">🔥 Mashhur</span>':'')+'<div class="img">'+vis(x)+'</div><div class="b"><small>'+esc(x.c)+'</small><h3>'+esc(x.n)+'</h3><div class="pr"><b>'+fmt(x.p)+'</b>'+(x.o>x.p?'<s>'+fmt(x.o)+'</s>':'')+'</div>'+(x.q>0&&x.q<=30?'<div class="cq">Faqat '+x.q+' ta qoldi</div>':'')+'<button class="btn" data-i="'+i+'">Buyurtma berish</button></div></div>'}).join('')}
 $('bar').onclick=function(e){var c=e.target.getAttribute('data-c');if(c){cur=c;bar();grid()}};
 $('q').oninput=grid;$('so').onchange=grid;
 function sid(x){var m=/(\d+)\/?\s*$/.exec(x.oqim||'');return m?m[1]:''}
@@ -231,7 +251,7 @@ $('grid').onclick=function(e){var b=e.target.getAttribute('data-i');if(b!==null)
 function show(x){cp=x;var d=Math.round((1-x.p/x.o)*100);
  $('di').innerHTML=vis(x);$('dc').textContent=x.c;$('dn').textContent=x.n;$('dd').textContent=x.d;$('dp').textContent=fmt(x.p);$('do').textContent=x.o>x.p?fmt(x.o):'';
  $('df').innerHTML=x.f.map(function(t){return '<li>'+t+'</li>'}).join('');
- $('sbtn').textContent='🛒 Buyurtma berish — '+fmt(x.p);
+ $('sbtn').textContent='🛒 Buyurtma berish — '+fmt(x.p);extra(x);
  $('home').style.display='none';$('dv').style.display='block';$('stk').style.display='block';window.scrollTo(0,0)}
 function home(){$('dv').style.display='none';$('stk').style.display='none';$('home').style.display='block';window.scrollTo(0,0)}
 $('bk').onclick=home;$('lg').onclick=home;
@@ -242,35 +262,35 @@ function thanks(x,n,t,r){
  $('tyh').textContent='Rahmat, '+(n.split(/\s+/)[0]||'')+'!';
  $('tyi').innerHTML=vis(x);$('tyn').textContent=x.n;$('typ').textContent=fmt(x.p);
  $('tya').textContent=n;$('tyt').textContent=t;$('tyr').textContent=r;
- $('nm').value='';$('ph').value='';
+ $('nm').value='';$('ph').value='';$('qnm').value='';$('qph').value='';
  close();$('ty').classList.add('on')}
 $('tyx').onclick=function(){$('ty').classList.remove('on')};
 $('tyb').onclick=function(){$('ty').classList.remove('on');home()};
 $('ty').onclick=function(e){if(e.target===$('ty'))$('ty').classList.remove('on')};
 $('cl').onclick=close;$('ov').onclick=function(e){if(e.target===$('ov'))close()};
-var ph=$('ph');
-ph.oninput=function(){var v=ph.value.replace(/\D/g,'');if(v.indexOf('998')===0)v=v.slice(3);v=v.slice(0,9);
- var o='+998';if(v.length)o+=' '+v.slice(0,2);if(v.length>2)o+=' '+v.slice(2,5);if(v.length>5)o+=' '+v.slice(5,7);if(v.length>7)o+=' '+v.slice(7,9);ph.value=o};
-ph.onfocus=function(){if(!ph.value)ph.value='+998 '};
-$('go').onclick=function(){
- var n=$('nm').value.trim(),t=ph.value,r=$('rg').value,btn=$('go');
- if(n.length<2){$('er').textContent='Iltimos, ismingizni kiriting';return}
- if(t.replace(/\D/g,'').length<12){$('er').textContent="Telefon raqamni to'liq kiriting";return}
- function done(){
-  thanks(cp,n,t,r)}
+function mask(el){el.oninput=function(){var v=el.value.replace(/\D/g,'');if(v.indexOf('998')===0)v=v.slice(3);v=v.slice(0,9);
+ var o='+998';if(v.length)o+=' '+v.slice(0,2);if(v.length>2)o+=' '+v.slice(2,5);if(v.length>5)o+=' '+v.slice(5,7);if(v.length>7)o+=' '+v.slice(7,9);el.value=o};
+ el.onfocus=function(){if(!el.value)el.value='+998 '}}
+var ph=$('ph');mask(ph);mask($('qph'));$('qrg').innerHTML=$('rg').innerHTML;
+function send(n,t,r,btn,er,label){
+ if(n.length<2){er.textContent='Iltimos, ismingizni kiriting';return}
+ if(t.replace(/\D/g,'').length<12){er.textContent="Telefon raqamni to'liq kiriting";return}
+ function done(){thanks(cp,n,t,r)}
  var st=sid(cp);
  if(CFG.api&&st){
-  btn.disabled=true;btn.textContent='Yuborilmoqda...';$('er').textContent='';
+  btn.disabled=true;btn.textContent='Yuborilmoqda...';er.textContent='';
   fetch(CFG.api,{method:'POST',headers:{'Content-Type':'application/json'},
-   body:JSON.stringify({full_name:n,phone_number:'+'+t.replace(/\D/g,''),stream:st})})
+   body:JSON.stringify({full_name:n,phone_number:'+'+t.replace(/\D/g,''),stream:st,region:r})})
   .then(function(res){return res.json().catch(function(){return{}}).then(function(j){return{ok:res.ok,s:res.status,j:j}})})
-  .then(function(o){btn.disabled=false;btn.textContent='✅ Buyurtmani tasdiqlash';
-   if(o.ok)done();else $('er').textContent="Yuborib bo'lmadi ["+o.s+"] "+JSON.stringify(o.j).slice(0,220)+" — "+CFG.phone})  /* DEBUG: sinovdan keyin [..] va JSON qismini olib tashlaymiz */
-  .catch(function(){btn.disabled=false;btn.textContent='✅ Buyurtmani tasdiqlash';$('er').textContent="Internet xatosi. Qayta urinib ko'ring"});
+  .then(function(o){btn.disabled=false;btn.textContent=label;
+   if(o.ok)done();else er.textContent="Yuborib bo'lmadi ["+o.s+"] "+JSON.stringify(o.j).slice(0,220)+" — "+CFG.phone})  /* DEBUG: sinovdan keyin [..] va JSON qismini olib tashlaymiz */
+  .catch(function(){btn.disabled=false;btn.textContent=label;er.textContent="Internet xatosi. Qayta urinib ko'ring"});
   return}
  var msg="🛒 Yangi buyurtma\nMahsulot: "+cp.n+"\nNarx: "+fmt(cp.p)+"\nIsm: "+n+"\nTel: "+t+"\nHudud: "+r;
  done();
- if(CFG.tg)window.open('https://t.me/'+CFG.tg.replace('@','')+'?text='+encodeURIComponent(msg),'_blank')};
+ if(CFG.tg)window.open('https://t.me/'+CFG.tg.replace('@','')+'?text='+encodeURIComponent(msg),'_blank')}
+$('go').onclick=function(){send($('nm').value.trim(),ph.value,$('rg').value,$('go'),$('er'),'✅ Buyurtmani tasdiqlash')};
+$('qgo').onclick=function(){send($('qnm').value.trim(),$('qph').value,$('qrg').value,$('qgo'),$('qer'),'✅ Buyurtma berish')};
 // Mahsulotlar admin panelidan (/api/products) olinadi; ishlamasa fayldagi ro'yxat ishlatiladi
 function route(){try{var m=/^#p(\d+)$/.exec(location.hash);if(m&&P[m[1]-1]){var x=P[m[1]-1];show(x);$('bk').style.display='none';promo(x)}}catch(e){}}
 function loadP(){
@@ -285,11 +305,31 @@ function promo(x){
  $('pb').textContent=disc(x)?'🔥 AKSIYA −'+disc(x)+'%':'🔥 TAKLIF';$('pi').innerHTML=vis(x);$('pn').textContent=x.n;
  $('pp').textContent=fmt(x.p);$('po').textContent=x.o>x.p?fmt(x.o):'';
  $('pf').innerHTML=x.f.slice(0,3).map(function(t){return '<li>✅ '+t+'</li>'}).join('');
- if(AKSIYA_TUGASH){var end=new Date(AKSIYA_TUGASH).getTime(),tm=$('tm');(function t(){var d=end-Date.now();if(d<=0){tm.style.display='none';return}
-  var h=d/36e5|0,mi=d%36e5/6e4|0,s=d%6e4/1e3|0;tm.textContent='⏳ Aksiya tugashiga: '+h+' soat '+mi+' daq '+s+' son';tm.style.display='block';setTimeout(t,1000)})()}
+ tick();
  $('pm').classList.add('on');
  $('pcl').onclick=$('plk').onclick=function(){$('pm').classList.remove('on')};
  $('pbtn').onclick=function(){$('pm').classList.remove('on');order(x)}}
+function p2(n){return n<10?'0'+n:n}
+function tick(){var end=AKSIYA_TUGASH?new Date(AKSIYA_TUGASH).getTime():0,d=end-Date.now(),els=document.querySelectorAll('.cd');
+ for(var i=0;i<els.length;i++){var e=els[i];if(!end||isNaN(d)||d<=0){e.style.display='none';continue}
+  e.textContent='⏳ Aksiya tugashiga: '+p2(d/36e5|0)+':'+p2(d%36e5/6e4|0)+':'+p2(d%6e4/1e3|0);e.style.display='block'}}
+setInterval(tick,1000);tick();
+function extra(x){
+ $('dl').innerHTML='<div><span>🚚 Yetkazish muddati</span><b>'+esc(CFG.muddat)+'</b></div>'+(CFG.dnarx?'<div><span>📦 Yetkazish narxi</span><b>'+esc(CFG.dnarx)+'</b></div>':'')+"<div><span>💵 To'lov</span><b>Olganda</b></div><div><span>☎️ Aloqa</span><b>Operator bog'lanadi</b></div>";
+ $('dq').innerHTML=x.q>0&&x.q<=30?'<div class="qty">🔥 Faqat '+x.q+' ta qoldi</div><div class="qb"><i style="width:'+Math.max(6,Math.min(100,x.q*3))+'%"></i></div>':'';
+ var r=x.rv||[],sum=0;r.forEach(function(v){sum+=v.r});
+ $('dr').innerHTML=r.length?'<h2>Mijozlar fikri</h2><div class="av">★ '+(sum/r.length).toFixed(1)+' · '+r.length+' ta sharh</div>'+r.map(function(v){return '<div class="rc"><b>'+esc(v.a)+'</b>'+(v.s?' <small style="color:var(--mut)">· '+esc(v.s)+'</small>':'')+'<div class="st">'+Array(v.r+1).join('★')+'</div><p>'+esc(v.t)+'</p></div>'}).join(''):'';
+ $('qpn').textContent=x.n+' — '+fmt(x.p);$('qer').textContent='';tick()}
+// Haqiqiy oxirgi buyurtmalar (ism va telefonsiz). Ma'lumot bo'lmasa hech narsa chiqmaydi.
+function ago(t){var m=Math.round((Date.now()-t)/6e4);return m<1?'hozirgina':m<60?m+' daqiqa oldin':m<1440?Math.round(m/60)+' soat oldin':Math.round(m/1440)+' kun oldin'}
+fetch('/api/recent').then(function(r){return r.ok?r.json():[]}).then(function(a){
+ if(!Array.isArray(a)||!a.length)return;var i=0,t=$('rt');
+ function nxt(){var n=a.length,o=null,pn='';
+  for(var j=0;j<n&&!o;j++){var c=a[i++%n];for(var k=0;k<P.length;k++)if(sid(P[k])===c.s){o=c;pn=P[k].n}}
+  if(!o)return;
+  t.innerHTML='📦 Yangi buyurtma'+(o.r?': <b>'+esc(o.r)+'</b>':'')+'<br><span style="color:var(--mut)">'+esc(pn)+' · '+ago(o.t)+'</span>';
+  t.style.display='block';setTimeout(function(){t.style.display='none';setTimeout(nxt,8000)},5000)}
+ setTimeout(nxt,6000)}).catch(function(){});
 </script>
 </body>
 </html>
