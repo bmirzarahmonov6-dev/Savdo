@@ -3,6 +3,21 @@
 
 const API_URL = "https://alijahon.uz/api/new-order/";
 
+// Statistika: kunlik hisoblagich (Upstash). Xato bo'lsa ham lid yuborishga ta'sir qilmaydi.
+async function track(stream, ok) {
+  try {
+    const url = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+    const token = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+    if (!url || !token) return;
+    const day = new Date(Date.now() + 5 * 36e5).toISOString().slice(0, 10); // Toshkent vaqti
+    await fetch(url, {
+      method: "POST",
+      headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
+      body: JSON.stringify(["HINCRBY", "stats:" + day, stream + ":" + (ok ? "ok" : "fail"), 1]),
+    });
+  } catch (e) {}
+}
+
 module.exports = async (req, res) => {
   if (req.method !== "POST") return res.status(405).json({ error: "method" });
 
@@ -40,12 +55,16 @@ module.exports = async (req, res) => {
       });
       const text = await r.text();
       last = text;
-      if (r.status !== 401 && r.status !== 403)
+      if (r.status !== 401 && r.status !== 403) {
+        await track(stream, r.ok);
         return res.status(r.ok ? 200 : 502).json({ ok: r.ok, auth: sc.name, upstream: safe(text) });
+      }
     } catch (e) {
+      await track(stream, false);
       return res.status(502).json({ ok: false, error: "network" });
     }
   }
+  await track(stream, false);
   return res.status(502).json({ ok: false, error: "auth", upstream: safe(last) });
 };
 
