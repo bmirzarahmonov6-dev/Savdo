@@ -79,6 +79,7 @@ body{background:#181818}
 input,select{background:#2a2a2a;border-color:#333;color:#fff}
 .sticky{background:#181818}
 .why div,details{background:#222}
+.pim{width:100%;height:100%;object-fit:cover;display:block}.pm .pi .pim{width:130px;height:130px;border-radius:20px}
 .okc{width:64px;height:64px;border-radius:50%;background:#2a3a2f;color:#6fcf97;display:flex;align-items:center;justify-content:center;font-size:34px;margin:4px auto 10px}
 .okb h3{font-size:19px}.okb .sm2{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:12px 14px;text-align:left;margin:14px 0}
 .okb .sm2 div{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:3px 0}.okb .sm2 div span:first-child{color:var(--mut)}
@@ -175,15 +176,21 @@ function fmt(x){return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,' ')+" so'm"}
 $('lg').innerHTML=CFG.shop.replace(/^(\S+)/,'$1<b></b>').replace('<b></b>','')+'';
 $('lg').textContent=CFG.shop;$('ft').textContent='© 2026 '+CFG.shop+' · Barcha huquqlar himoyalangan';
 $('tel').href='tel:'+CFG.phone;
-var cats=['Hammasi'].concat(P.map(function(x){return x.c}).filter(function(v,i,a){return a.indexOf(v)===i})),cur='Hammasi',cp=null;
+var cats=['Hammasi'],cur='Hammasi',cp=null;
+function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function vis(x){return x.im?'<img class="pim" src="'+esc(x.im)+'" alt="" loading="lazy">':esc(x.e||'🛍️')}
+function disc(x){return x.o>x.p?Math.round((1-x.p/x.o)*100):0}
+// Faqat oqimi bor mahsulotlar ko'rsatiladi (aks holda buyurtma alijahon.uz'ga tushmaydi)
+function setP(list){P=list.filter(function(x){return x&&x.n&&x.p>0&&sid(x)});
+ cats=['Hammasi'].concat(P.map(function(x){return x.c}).filter(function(v,i,a){return v&&a.indexOf(v)===i}));if(cats.indexOf(cur)<0)cur='Hammasi'}
 function bar(){$('bar').innerHTML=cats.map(function(c){return '<button class="chip'+(c===cur?' on':'')+'" data-c="'+c+'">'+c+'</button>'}).join('')}
 function grid(){
  var q=$('q').value.trim().toLowerCase(),s=$('so').value;
  var l=P.filter(function(x){return(cur==='Hammasi'||x.c===cur)&&(!q||x.n.toLowerCase().indexOf(q)>-1)});
  if(s==='1')l.sort(function(a,b){return a.p-b.p});if(s==='2')l.sort(function(a,b){return b.p-a.p});
  $('empty').style.display=l.length?'none':'block';
- $('grid').innerHTML=l.map(function(x){var i=P.indexOf(x),d=Math.round((1-x.p/x.o)*100);
-  return '<div class="p" data-v="'+i+'"><span class="sale">-'+d+'%</span>'+(x.hit?'<span class="hit">🔥 Mashhur</span>':'')+'<div class="img">'+x.e+'</div><div class="b"><small>'+x.c+'</small><h3>'+x.n+'</h3><div class="pr"><b>'+fmt(x.p)+'</b><s>'+fmt(x.o)+'</s></div><button class="btn" data-i="'+i+'">Buyurtma berish</button></div></div>'}).join('')}
+ $('grid').innerHTML=l.map(function(x){var i=P.indexOf(x),d=disc(x);
+  return '<div class="p" data-v="'+i+'">'+(d?'<span class="sale">-'+d+'%</span>':'')+(x.hit?'<span class="hit">🔥 Mashhur</span>':'')+'<div class="img">'+vis(x)+'</div><div class="b"><small>'+esc(x.c)+'</small><h3>'+esc(x.n)+'</h3><div class="pr"><b>'+fmt(x.p)+'</b>'+(x.o>x.p?'<s>'+fmt(x.o)+'</s>':'')+'</div><button class="btn" data-i="'+i+'">Buyurtma berish</button></div></div>'}).join('')}
 $('bar').onclick=function(e){var c=e.target.getAttribute('data-c');if(c){cur=c;bar();grid()}};
 $('q').oninput=grid;$('so').onchange=grid;
 function sid(x){var m=/(\d+)\/?\s*$/.exec(x.oqim||'');return m?m[1]:''}
@@ -192,7 +199,7 @@ function order(x){if(x.oqim&&!(CFG.api&&sid(x))){var w=window.open(x.oqim,'_blan
 $('grid').onclick=function(e){var b=e.target.getAttribute('data-i');if(b!==null){order(P[b]);return}
  var c=e.target.closest('[data-v]');if(c)show(P[c.getAttribute('data-v')])};
 function show(x){cp=x;var d=Math.round((1-x.p/x.o)*100);
- $('di').textContent=x.e;$('dc').textContent=x.c;$('dn').textContent=x.n;$('dd').textContent=x.d;$('dp').textContent=fmt(x.p);$('do').textContent=fmt(x.o);
+ $('di').innerHTML=vis(x);$('dc').textContent=x.c;$('dn').textContent=x.n;$('dd').textContent=x.d;$('dp').textContent=fmt(x.p);$('do').textContent=x.o>x.p?fmt(x.o):'';
  $('df').innerHTML=x.f.map(function(t){return '<li>'+t+'</li>'}).join('');
  $('sbtn').textContent='🛒 Buyurtma berish — '+fmt(x.p);
  $('home').style.display='none';$('dv').style.display='block';$('stk').style.display='block';window.scrollTo(0,0)}
@@ -225,14 +232,19 @@ $('go').onclick=function(){
  var msg="🛒 Yangi buyurtma\nMahsulot: "+cp.n+"\nNarx: "+fmt(cp.p)+"\nIsm: "+n+"\nTel: "+t+"\nHudud: "+r;
  done();
  if(CFG.tg)window.open('https://t.me/'+CFG.tg.replace('@','')+'?text='+encodeURIComponent(msg),'_blank')};
-bar();grid();
+// Mahsulotlar admin panelidan (/api/products) olinadi; ishlamasa fayldagi ro'yxat ishlatiladi
+function route(){try{var m=/^#p(\d+)$/.exec(location.hash);if(m&&P[m[1]-1]){var x=P[m[1]-1];show(x);$('bk').style.display='none';promo(x)}}catch(e){}}
+function loadP(){
+ var ctl=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(ctl)ctl.abort()},4000);
+ return fetch('/api/products',ctl?{signal:ctl.signal}:{}).then(function(r){return r.ok?r.json():null})
+  .then(function(d){clearTimeout(tm);return Array.isArray(d)?d:null}).catch(function(){return null})}
 // Reklama havolasi: ...#p1, #p2, ... — mijoz to'g'ridan-to'g'ri shu mahsulot sahifasiga tushadi
-setTimeout(function(){try{var m=/^#p(\d+)$/.exec(location.hash);if(m&&P[m[1]-1]){var x=P[m[1]-1];show(x);$('bk').style.display='none';promo(x)}}catch(e){}},0);
+loadP().then(function(d){setP(d||P);bar();grid();route()});
 // AKSIYA tugash vaqti, masalan "2026-10-31T23:59". Bo'sh qoldirsangiz taymer chiqmaydi (yolg'on taymer qo'ymang).
 var AKSIYA_TUGASH="";
 function promo(x){
- $('pb').textContent='🔥 AKSIYA −'+Math.round((1-x.p/x.o)*100)+'%';$('pi').textContent=x.e;$('pn').textContent=x.n;
- $('pp').textContent=fmt(x.p);$('po').textContent=fmt(x.o);
+ $('pb').textContent=disc(x)?'🔥 AKSIYA −'+disc(x)+'%':'🔥 TAKLIF';$('pi').innerHTML=vis(x);$('pn').textContent=x.n;
+ $('pp').textContent=fmt(x.p);$('po').textContent=x.o>x.p?fmt(x.o):'';
  $('pf').innerHTML=x.f.slice(0,3).map(function(t){return '<li>✅ '+t+'</li>'}).join('');
  if(AKSIYA_TUGASH){var end=new Date(AKSIYA_TUGASH).getTime(),tm=$('tm');(function t(){var d=end-Date.now();if(d<=0){tm.style.display='none';return}
   var h=d/36e5|0,mi=d%36e5/6e4|0,s=d%6e4/1e3|0;tm.textContent='⏳ Aksiya tugashiga: '+h+' soat '+mi+' daq '+s+' son';tm.style.display='block';setTimeout(t,1000)})()}
