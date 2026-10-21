@@ -36,6 +36,17 @@ label{display:block;font-weight:600;font-size:14px;margin:12px 0 5px}
 @media(min-width:600px){.ov{align-items:center}.sh{border-radius:22px}}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .err{color:var(--red);font-size:14px;min-height:20px;margin-top:8px}
+.tabs{display:flex;gap:8px;margin:0 0 12px}
+.tabs button{flex:1}.tabs button.on,.chips button.on{background:var(--pr);color:#181818;font-weight:700}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.chips button{padding:8px 12px;font-size:14px}
+.big2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.big2 div{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:12px;text-align:center}
+.big2 b{display:block;font-size:30px;line-height:1.1}.big2 span{font-size:13px;color:var(--mut)}
+.sh2{font-weight:700;margin:16px 0 6px}
+.sr{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:14px}
+.sl{flex:0 0 38%;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sb{flex:1;height:8px;background:#2a2a2a;border-radius:6px;overflow:hidden}.sb i{display:block;height:100%;background:var(--pr)}
+.sn{flex:0 0 auto;min-width:44px;text-align:right;font-weight:700}
 #bar{position:fixed;left:0;right:0;bottom:0;background:#181818;border-top:1px solid var(--bd);padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));text-align:center;font-size:14px;color:var(--mut);z-index:10}
 </style>
 </head>
@@ -51,9 +62,13 @@ label{display:block;font-weight:600;font-size:14px;margin:12px 0 5px}
 
 <div id="app" style="display:none">
  <div class="w">
-  <header><h1>🛍️ Mahsulotlar</h1><button class="pr" id="add">+ Yangi</button></header>
-  <p class="hint" style="margin:0 0 12px">Faqat <b>oqimi bor</b> va <b>faol</b> mahsulotlar saytda ko'rinadi. O'zgarish avtomatik saqlanadi.</p>
-  <div id="list"></div>
+  <header><h1>Admin</h1><button class="pr" id="add">+ Yangi</button></header>
+  <div class="tabs"><button id="t1" class="on">🛍️ Mahsulotlar</button><button id="t2">📊 Statistika</button></div>
+  <div id="v1">
+   <p class="hint" style="margin:0 0 12px">Faqat <b>oqimi bor</b> va <b>faol</b> mahsulotlar saytda ko'rinadi. O'zgarish avtomatik saqlanadi.</p>
+   <div id="list"></div>
+  </div>
+  <div id="v2" style="display:none"><div id="sv"></div></div>
   <button id="out" style="margin:14px 0">Chiqish</button>
  </div>
 </div>
@@ -199,6 +214,38 @@ $('file').onchange=function(){
  .then(function(j){$('im').value=j.url;pv();$('uh').textContent="✓ Rasm yuklandi. Pastdagi «Saqlash» ni bosing."})
  .catch(function(e){$('uh').textContent='Yuklanmadi: '+(e.message||'xato')})
  .then(function(){$('pick').disabled=false})};
+// ---------- Statistika ----------
+var SD={},per=7,MON=['Yanvar','Fevral','Mart','Aprel','May','Iyun','Iyul','Avgust','Sentabr','Oktabr','Noyabr','Dekabr'];
+function dayList(n){var b=Date.now()+5*36e5,a=[];for(var i=0;i<n;i++)a.push(new Date(b-i*864e5).toISOString().slice(0,10));return a}
+function dm(d){return d.slice(8,10)+'.'+d.slice(5,7)}
+function pname(id){for(var i=0;i<items.length;i++)if(oid(items[i])===id)return items[i].n;return 'Oqim '+id}
+function srow(l,ok,f,mx){return '<div class="sr"><div class="sl">'+l+'</div><div class="sb"><i style="width:'+(mx?Math.round(ok/mx*100):0)+'%"></i></div><div class="sn">'+ok+(f?' <span class="bad" style="font-weight:400;font-size:12px">+'+f+' xato</span>':'')+'</div></div>'}
+function sum(ds){var ok=0,f=0,by={};ds.forEach(function(d){var x=SD[d]||{};for(var s in x){var a=x[s].ok||0,b=x[s].fail||0;ok+=a;f+=b;by[s]=by[s]||{ok:0,fail:0};by[s].ok+=a;by[s].fail+=b}});return{ok:ok,f:f,by:by}}
+function renderStats(){
+ var ds=dayList(per),t=sum(ds),h='';
+ h+='<div class="chips">'+[[1,'Bugun'],[7,'7 kun'],[30,'30 kun'],[120,'120 kun']].map(function(c){return '<button data-p="'+c[0]+'"'+(per===c[0]?' class="on"':'')+'>'+c[1]+'</button>'}).join('')+'</div>';
+ h+='<div class="big2"><div><b>'+t.ok+'</b><span>Yuborilgan lid</span></div><div><b class="'+(t.f?'bad':'')+'">'+t.f+'</b><span>Xato (yuborilmadi)</span></div></div>';
+ var ids=Object.keys(t.by).sort(function(a,b){return t.by[b].ok-t.by[a].ok}),mx=ids.length?t.by[ids[0]].ok:0;
+ h+='<div class="sh2">Mahsulotlar bo\'yicha</div>'+(ids.length?ids.map(function(i){return srow(esc(pname(i)),t.by[i].ok,t.by[i].fail,mx)}).join(''):'<div class="sub">Bu davrda lid yo\'q</div>');
+ if(per>1&&per<=30){var dl=ds.map(function(d){var q=sum([d]);return{d:d,ok:q.ok,f:q.f}}),dmx=Math.max.apply(null,dl.map(function(x){return x.ok}).concat([0]));
+  h+='<div class="sh2">Kunlar bo\'yicha</div>'+dl.map(function(x){return srow(dm(x.d),x.ok,x.f,dmx)}).join('')}
+ var wk=[],wmx=0;for(var w=0;w<8;w++){var wd=dayList(7*(w+1)).slice(7*w),q=sum(wd);wk.push({l:dm(wd[6])+' – '+dm(wd[0]),ok:q.ok,f:q.f});if(q.ok>wmx)wmx=q.ok}
+ h+='<div class="sh2">Haftalar bo\'yicha (7 kunlik)</div>'+wk.map(function(x){return srow(x.l,x.ok,x.f,wmx)}).join('');
+ var mo={};Object.keys(SD).forEach(function(d){var m=d.slice(0,7),q=sum([d]);mo[m]=mo[m]||{ok:0,f:0};mo[m].ok+=q.ok;mo[m].f+=q.f});
+ var ms=Object.keys(mo).sort().reverse(),mmx=Math.max.apply(null,ms.map(function(m){return mo[m].ok}).concat([0]));
+ h+='<div class="sh2">Oylar bo\'yicha</div>'+(ms.length?ms.map(function(m){return srow(MON[+m.slice(5,7)-1]+' '+m.slice(0,4),mo[m].ok,mo[m].f,mmx)}).join(''):'<div class="sub">Hali ma\'lumot yo\'q</div>');
+ h+='<p class="hint" style="margin-top:16px">Bu raqamlar shu sayt orqali yuborilgan va alijahon.uz qabul qilgan lidlar. Hisob statistika qo\'shilgan kundan boshlanadi. Buyurtma tasdiqlanishi va yetkazilishini alijahon.uz kabinetida ko\'ring. «Xato» — alijahon.uz qabul qilmagan lidlar.</p>';
+ $('sv').innerHTML=h}
+function loadStats(){
+ $('sv').innerHTML='<div class="sub">Yuklanmoqda...</div>';
+ fetch('/api/stats?days=120',{headers:{'x-admin-password':pw},cache:'no-store'})
+  .then(function(r){return r.json().catch(function(){return{}}).then(function(j){return{s:r.status,j:j}})})
+  .then(function(o){if(o.s!==200){$('sv').innerHTML='<div class="err">'+esc((o.j&&o.j.error)||('Xatolik '+o.s))+'</div>';return}SD=o.j.days||{};renderStats()})
+  .catch(function(){$('sv').innerHTML='<div class="err">Internet xatosi</div>'})}
+function tab(n){$('v1').style.display=n===1?'block':'none';$('v2').style.display=n===2?'block':'none';$('add').style.display=n===1?'':'none';
+ $('t1').className=n===1?'on':'';$('t2').className=n===2?'on':'';if(n===2)loadStats()}
+$('t1').onclick=function(){tab(1)};$('t2').onclick=function(){tab(2)};
+$('sv').onclick=function(e){var p=e.target.getAttribute('data-p');if(p){per=+p;renderStats()}};
 $('lgo').onclick=function(){login($('pw').value)};
 $('pw').onkeydown=function(e){if(e.key==='Enter')login($('pw').value)};
 $('out').onclick=function(){store('adm',null);location.reload()};
