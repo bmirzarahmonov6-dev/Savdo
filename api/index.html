@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Onlayn do'kon — chegirmali mahsulotlar</title>
+<style>
+:root{--bg:#fff;--card:#f6f7fb;--tx:#14161f;--mut:#5d6375;--pr:#ff5a1f;--pr2:#ff8a3d;--bd:#e4e6ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1117;--card:#1a1d27;--tx:#f2f3f7;--mut:#a3a9ba;--bd:#2a2e3b}}
+:root[data-theme="dark"]{--bg:#0f1117;--card:#1a1d27;--tx:#f2f3f7;--mut:#a3a9ba;--bd:#2a2e3b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.w{max-width:1060px;margin:auto;padding:0 16px}
+.top{background:linear-gradient(90deg,var(--pr),var(--pr2));color:#fff;text-align:center;padding:9px 12px;font-weight:600;font-size:14px}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.logo{font-weight:800;font-size:22px;cursor:pointer}.logo b{color:var(--pr)}
+.tel{color:var(--pr);font-weight:700;text-decoration:none}
+.hero{background:linear-gradient(135deg,var(--pr),var(--pr2));color:#fff;border-radius:24px;padding:28px 22px;margin:6px 0 20px}
+.hero h1{margin:0 0 8px;font-size:clamp(24px,5.5vw,38px);line-height:1.15}.hero p{margin:0;opacity:.95}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;font-size:13.5px;font-weight:600}.tags span{background:#ffffff2e;padding:6px 12px;border-radius:99px}
+.tools{display:flex;gap:10px;margin-bottom:12px}
+input,select{width:100%;padding:13px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit}
+select{width:auto;max-width:46%}
+.bar{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:14px}
+.chip{border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:8px 16px;border-radius:99px;cursor:pointer;white-space:nowrap;font:600 14px inherit;font-family:inherit}
+.chip.on{background:var(--pr);color:#fff;border-color:var(--pr)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.p{background:var(--card);border:1px solid var(--bd);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;position:relative;cursor:pointer}
+.img{aspect-ratio:1;display:grid;place-items:center;font-size:64px;background:radial-gradient(circle at 30% 25%,#ffe3d1,#ffb48a)}
+.sale{position:absolute;top:10px;left:10px;background:#e5383b;color:#fff;font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px}
+.hit{position:absolute;top:10px;right:10px;background:#14161f;color:#ffd24a;font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px}
+.b{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}.b h3{margin:0;font-size:15px;line-height:1.3}.b small{color:var(--mut);font-size:12.5px}
+.pr{margin-top:auto}.pr b{font-size:18px;color:var(--pr)}.pr s{color:var(--mut);font-size:13px;margin-left:6px}
+.btn{border:0;cursor:pointer;background:linear-gradient(90deg,var(--pr),var(--pr2));color:#fff;font:700 15px inherit;font-family:inherit;padding:13px;border-radius:12px;width:100%;margin-top:6px;box-shadow:0 6px 16px #ff5a1f44}
+.empty{text-align:center;color:var(--mut);padding:30px;display:none}
+h2{text-align:center;margin:36px 0 16px;font-size:24px}
+.why{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.why div{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;text-align:center}.why i{font-style:normal;font-size:28px;display:block}.why p{margin:4px 0 0;color:var(--mut);font-size:14px}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:30px 0 90px}
+/* detail */
+#dv{display:none}
+.back{background:none;border:0;color:var(--pr);font:700 15px inherit;font-family:inherit;cursor:pointer;padding:8px 0}
+.dg{display:grid;gap:22px;margin:10px 0}@media(min-width:760px){.dg{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.dimg{aspect-ratio:1;border-radius:26px;display:grid;place-items:center;font-size:clamp(100px,26vw,180px);background:radial-gradient(circle at 30% 25%,#ffd2b8,var(--pr) 75%);box-shadow:0 18px 44px #ff5a1f40}
+.dv h1{font-size:clamp(24px,5vw,34px);margin:6px 0;line-height:1.15}
+.dprice{display:flex;align-items:baseline;gap:12px;margin:10px 0}.dprice b{font-size:34px;color:var(--pr)}.dprice s{color:var(--mut);font-size:19px}
+ul.f{list-style:none;padding:0;margin:14px 0}ul.f li{padding:8px 0 8px 30px;position:relative;border-bottom:1px solid var(--bd)}ul.f li:before{content:"✅";position:absolute;left:0}
+.info{display:grid;gap:8px;margin:14px 0;font-size:14.5px;color:var(--mut)}
+details{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px 18px;margin-bottom:10px}summary{font-weight:600;cursor:pointer}
+.sticky{position:fixed;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:1px solid var(--bd);z-index:9;display:none}
+@media(min-width:760px){.sticky{display:none!important}}
+.ov{position:fixed;inset:0;background:#000a;display:none;align-items:flex-end;justify-content:center;z-index:20}.ov.on{display:flex}
+.md{background:var(--bg);width:100%;max-width:460px;border-radius:22px 22px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom,0px));position:relative}
+@media(min-width:600px){.ov{align-items:center}.md{border-radius:22px}}
+.x{position:absolute;right:14px;top:10px;background:none;border:0;font-size:28px;color:var(--mut);cursor:pointer}
+.md h3{margin:0 0 2px}.md .sm{color:var(--pr);font-weight:700;margin-bottom:6px}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 6px}
+.err{color:#e5383b;font-size:13px;min-height:18px}.okb{display:none;text-align:center}.okb .big{font-size:56px}
+.pm{z-index:30}.pm .md{text-align:center;max-width:420px}
+.pm .pi{font-size:92px;line-height:1;margin:4px 0}
+.pm .bd{display:inline-block;background:#e5383b;color:#fff;font-weight:800;padding:4px 14px;border-radius:99px;font-size:14px}
+.pm .tm{margin:10px 0;font-weight:700;color:var(--pr)}
+.pm ul{list-style:none;padding:0;margin:10px 0;text-align:left;font-size:14.5px}.pm li{padding:3px 0}
+.pm .btn{font-size:18px;padding:15px}.pm .lk{background:none;border:0;color:var(--mut);margin-top:10px;cursor:pointer;font:inherit;text-decoration:underline}
+:root,:root:not([data-theme="light"]),:root[data-theme="dark"]{--bg:#181818;--card:#222;--tx:#fff;--mut:#9a9a9a;--pr:#ab9ff2;--pr2:#8b7ff0;--bd:#2e2e2e;color-scheme:dark}
+body{background:#181818}
+.top{background:#ab9ff2;color:#181818}
+.hero{background:linear-gradient(135deg,#ab9ff2,#7c6cf0);color:#181818;border-radius:28px}
+.tags span{background:#00000022}
+.btn,.pm .btn{background:#ab9ff2;color:#181818;box-shadow:none;border-radius:16px}
+.chip{border-radius:14px}.chip.on{background:#ab9ff2;color:#181818;border-color:#ab9ff2}
+.hit{background:#ab9ff2;color:#181818}
+.pm .bd{background:#ab9ff2;color:#181818}
+.p{border-radius:22px}
+.img{background:linear-gradient(135deg,#322d5c,#1d1a38)}
+.dimg{background:linear-gradient(135deg,#3a3270,#1d1a38);box-shadow:none}
+.md{background:#222}
+input,select{background:#2a2a2a;border-color:#333;color:#fff}
+.sticky{background:#181818}
+.why div,details{background:#222}
+.pim{width:100%;height:100%;object-fit:cover;display:block}.img,.dimg,.tyi{position:relative;overflow:hidden}.img .pim,.dimg .pim,.tyi .pim{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.pm .pi .pim{width:130px;height:130px;border-radius:20px;margin:0 auto}
+.ty{z-index:40;background:#000c}
+.ty .md{max-width:440px;max-height:94vh;overflow:auto;text-align:center;padding-top:30px;animation:tyup .35s ease-out}
+@keyframes tyup{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.tyc{width:92px;height:92px;margin:0 auto 14px}.tyc svg{width:100%;height:100%}
+.tc{fill:#2a3a2f;stroke:#6fcf97;stroke-width:2;stroke-dasharray:151;stroke-dashoffset:151;animation:tydraw .6s ease-out forwards}
+.tk{fill:none;stroke:#6fcf97;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;animation:tydraw .4s .5s ease-out forwards}
+@keyframes tydraw{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.tc,.tk{animation:none;stroke-dashoffset:0}.ty .md{animation:none}}
+.ty h2{margin:0 0 6px;font-size:24px}
+.tys{color:var(--mut);margin:0 0 16px;font-size:15px}
+.tyk{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:10px;text-align:left;margin-bottom:10px}
+.tyi{width:56px;height:56px;border-radius:12px;background:#322d5c;display:grid;place-items:center;font-size:30px;overflow:hidden;flex:none}
+.tyk b{display:block;line-height:1.25;font-size:15px}.tyk span{color:var(--pr);font-weight:700;font-size:15px}
+.tyd{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:6px 14px;text-align:left;margin-bottom:14px}
+.tyd div{display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:7px 0;border-bottom:1px solid var(--bd)}.tyd div:last-child{border:0}
+.tyd span{color:var(--mut)}.tyd b{text-align:right}
+.tyst{text-align:left;margin:0 0 16px}.tyst .h{font-weight:700;font-size:14px;margin-bottom:10px}
+.tyst p{display:flex;gap:10px;margin:0 0 10px;font-size:14px;line-height:1.4}
+.tyst i{font-style:normal;width:24px;height:24px;border-radius:50%;background:var(--pr);color:#181818;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex:none}
+.okc{width:64px;height:64px;border-radius:50%;background:#2a3a2f;color:#6fcf97;display:flex;align-items:center;justify-content:center;font-size:34px;margin:4px auto 10px}
+.okb h3{font-size:19px}.okb .sm2{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:12px 14px;text-align:left;margin:14px 0}
+.okb .sm2 div{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:3px 0}.okb .sm2 div span:first-child{color:var(--mut)}
+.okb .stp{text-align:left;font-size:13px;line-height:1.45;margin:0 0 14px}.okb .stp p{display:flex;gap:10px;margin:0 0 8px}
+.okb .stp b{width:22px;height:22px;border-radius:50%;background:var(--pr);color:#181818;font-size:12px;display:flex;align-items:center;justify-content:center;flex:none}
+[hidden]{display:none!important}
+.cd{margin:6px 0 0;font-size:12.5px;font-weight:700;color:#e5383b;font-variant-numeric:tabular-nums}
+.cdd{display:inline-block;margin:4px 0 0;padding:8px 14px;border-radius:12px;background:#e5383b1a;color:#e5383b;font-weight:700;font-variant-numeric:tabular-nums}
+.pm .tm{font-variant-numeric:tabular-nums}
+.rv{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.rv div{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px}.rv b{display:block;font-size:14px}.rv i{font-style:normal;color:#ffb400;font-size:13px}.rv p{margin:6px 0 0;color:var(--mut);font-size:14px}
+.fab{position:fixed;right:12px;bottom:18px;display:flex;flex-direction:column;gap:8px;z-index:10}.fab.up{bottom:84px}
+.fab a{display:block;text-decoration:none;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:99px;padding:10px 14px;font:700 13.5px inherit;font-family:inherit;box-shadow:0 6px 18px #0004}
+@media(min-width:760px){.fab.up{bottom:18px}}
+</style>
+</head>
+<body>
+<div class="top">🚚 Butun O'zbekiston bo'ylab yetkazib berish · Olganda to'lov</div>
+<div class="w">
+<header><div class="logo" id="lg"></div><a class="tel" id="tel" href="#">📞 Qo'ng'iroq</a></header>
+
+<div id="home">
+ <div class="hero"><h1>Foydali mahsulotlar — qulay narxlarda</h1><p>Mahsulotni tanlang, ism va telefon raqamingizni qoldiring. Operator siz bilan bog'lanadi.</p>
+ <div class="tags"><span>🚚 Tez yetkazish</span><span>💵 Olganda to'lov</span><span>☎️ Operator yordami</span><span class="tdy" hidden></span></div></div>
+ <div class="tools"><input id="q" placeholder="🔍 Mahsulot qidirish..."><select id="so"><option value="0">Mashhur</option><option value="1">Arzonroq</option><option value="2">Qimmatroq</option></select></div>
+ <div class="bar" id="bar"></div>
+ <div class="grid" id="grid"></div><div class="empty" id="empty">Hech narsa topilmadi</div>
+ <div id="rvs" hidden><h2>Mijozlar fikri</h2><div class="rv" id="rvl"></div></div>
+ <h2>Nega bizni tanlashadi?</h2>
+ <div class="why"><div><i>🚚</i><b>1–3 kunda yetkazish</b><p>Eshigingizgacha olib boramiz</p></div><div><i>💵</i><b>Olganda to'lang</b><p>Oldindan to'lov shart emas</p></div><div><i>👀</i><b>Ko'rib oling</b><p>Mahsulotni qo'lingizda tekshirasiz</p></div><div><i>☎️</i><b>Operator yordami</b><p>Savollaringizga javob beramiz</p></div></div>
+</div>
+
+<div id="dv" class="dv">
+ <button class="back" id="bk">← Barcha mahsulotlar</button>
+ <div class="dg"><div class="dimg" id="di"></div>
+ <div><small id="dc" style="color:var(--mut)"></small><h1 id="dn"></h1><p id="dd" style="color:var(--mut);margin:0"></p>
+  <div class="dprice"><b id="dp"></b><s id="do"></s></div>
+  <div class="cdd" id="dcd" data-cd data-off="1" hidden></div>
+  <button class="btn" id="dbtn" style="font-size:18px;padding:16px">🛒 Buyurtma berish</button>
+  <ul class="f" id="df"></ul>
+  <div class="info"><span>🚚 Yetkazib berish: 1–3 ish kuni</span><span>💵 To'lov: mahsulotni olganda</span><span>☎️ Buyurtmadan keyin operator bog'lanadi</span><span class="tdy" hidden></span></div></div></div>
+ <h2 style="font-size:22px">Savol-javob</h2>
+ <details><summary>To'lov qanday amalga oshiriladi?</summary><p style="color:var(--mut)">Mahsulotni olganingizda kuryerga to'laysiz. Oldindan to'lov kerak emas.</p></details>
+ <details><summary>Qachon yetkazib berasiz?</summary><p style="color:var(--mut)">Buyurtma tasdiqlangach, hududingizga qarab 1–3 ish kuni ichida.</p></details>
+ <details><summary>Mahsulot yoqmasa-chi?</summary><p style="color:var(--mut)" id="qp">Almashtirish va qaytarish shartlarini operator buyurtma paytida tushuntiradi.</p></details>
+</div>
+<footer id="ft"></footer>
+</div>
+<div class="fab" id="fab"><a id="fcall" href="#">📞 Qo'ng'iroq</a><a id="ftg" href="#" target="_blank" rel="noopener" hidden>✈️ Telegram</a></div>
+<div class="sticky" id="stk"><button class="btn" id="sbtn" style="margin:0"></button></div>
+
+<div class="ov pm" id="pm"><div class="md"><button class="x" id="pcl" aria-label="Yopish">×</button>
+ <span class="bd" id="pb"></span><div class="pi" id="pi"></div><h3 id="pn" style="font-size:21px"></h3>
+ <div class="dprice" style="justify-content:center"><b id="pp"></b><s id="po"></s></div>
+ <div class="tm" id="tm" data-cd data-off="1" hidden></div><ul id="pf"></ul>
+ <button class="btn" id="pbtn">🛒 Buyurtma berish</button><button class="lk" id="plk">Batafsil ma'lumot</button></div></div>
+<div class="ov" id="ov"><div class="md"><button class="x" id="cl" aria-label="Yopish">×</button>
+ <div id="fw"><h3 id="mt"></h3><div class="sm" id="mp"></div>
+  <label for="nm">Ismingiz</label><input id="nm" placeholder="Masalan: Aziz" autocomplete="name">
+  <label for="ph">Telefon raqamingiz</label><input id="ph" type="tel" inputmode="numeric" placeholder="+998 90 123 45 67" autocomplete="tel">
+  <label for="rg">Viloyat</label>
+  <select id="rg" style="max-width:100%;width:100%"><option>Toshkent shahri</option><option>Toshkent viloyati</option><option>Samarqand</option><option>Buxoro</option><option>Farg'ona</option><option>Andijon</option><option>Namangan</option><option>Qashqadaryo</option><option>Surxondaryo</option><option>Xorazm</option><option>Navoiy</option><option>Jizzax</option><option>Sirdaryo</option><option>Qoraqalpog'iston</option></select>
+  <div class="err" id="er"></div><button class="btn" id="go">✅ Buyurtmani tasdiqlash</button></div>
+ </div></div>
+
+<div class="ov ty" id="ty"><div class="md">
+ <button class="x" id="tyx" aria-label="Yopish">×</button>
+ <div class="tyc"><svg viewBox="0 0 52 52"><circle class="tc" cx="26" cy="26" r="24"/><path class="tk" d="M14 27l8 8 16-17"/></svg></div>
+ <h2 id="tyh">Rahmat!</h2>
+ <p class="tys">Buyurtmangiz qabul qilindi. Operator tez orada siz bilan bog'lanadi.</p>
+ <div class="tyk"><div class="tyi" id="tyi"></div><div style="min-width:0"><b id="tyn"></b><span id="typ"></span></div></div>
+ <div class="tyd"><div><span>Ism</span><b id="tya"></b></div><div><span>Telefon</span><b id="tyt"></b></div><div><span>Hudud</span><b id="tyr"></b></div><div><span>To'lov</span><b>Olganda</b></div></div>
+ <div class="tyst"><div class="h">Keyin nima bo'ladi</div>
+  <p><i>1</i><span>Operator raqamingizga qo'ng'iroq qiladi. Telefonni yoningizda saqlang</span></p>
+  <p><i>2</i><span>Buyurtmani tasdiqlaysiz va manzilni aytasiz</span></p>
+  <p><i>3</i><span>Mahsulot 1–3 ish kunida yetkaziladi, olganda to'laysiz</span></p></div>
+ <button class="btn" id="tyb">Boshqa mahsulotlar</button>
+</div></div>
+
+
+<script>
+// ================= SOZLAMALAR (oxirida shu yerni to'ldiramiz) =================
+var CFG={
+ api:"/api/lead",  // Vercel funksiyasi (api/lead.js)
+ shop:"Onlayn Do'kon",
+ phone:"+998901234567",
+ tg:""   // Telegram username, masalan "alijahon_admin" (oqim bo'lmagan mahsulotlar uchun)
+};
+// oqim — alijahon.uz'dagi shu mahsulot uchun oqim havolangiz. To'ldirilsa, "Buyurtma" tugmasi o'sha havolaga o'tadi.
+// Narxlar va tavsiflar NAMUNA: alijahon.uz'dagi haqiqiy ma'lumotga moslang.
+var P=[
+ {n:"Massaj qurilmasi (mini gun)",c:"Salomatlik",p:189000,o:329000,e:"💆",hit:1,
+  d:"Yelka, bel va oyoq mushaklari uchun ixcham massaj qurilmasi. Uyda ham, safarda ham qulay.",
+  f:["Bir necha tezlik rejimi","Almashtiriladigan nasadkalar","Zaryadlanadi, simsiz ishlaydi","Ixcham, sumkaga sig'adi"],oqim:""},
+ {n:"Simsiz avtomobil changyutgichi",c:"Avto",p:149000,o:269000,e:"🚗",hit:1,
+  d:"Mashina salonini bir necha daqiqada tozalash uchun kuchli va yengil changyutgich.",
+  f:["Quruq va nam chang uchun","USB orqali zaryadlanadi","Qiyin joylar uchun uzun nasadka","Yengil va ixcham"],oqim:""},
+ {n:"Mini LED proyektor",c:"Elektronika",p:349000,o:599000,e:"📽️",hit:0,
+  d:"Uyda kino va multfilm ko'rish uchun ixcham proyektor. Telefon va noutbuk bilan ulanadi.",
+  f:["Telefon, noutbuk va TV-box bilan ulanadi","Katta ekran effekti","Ixcham, olib yurish oson","Fokusni sozlash mumkin"],oqim:""},
+ {n:"Smart soat",c:"Elektronika",p:179000,o:329000,e:"⌚",hit:1,
+  d:"Qadamlar, qo'ng'iroq va bildirishnomalarni kuzatish uchun zamonaviy smart soat.",
+  f:["Telefon bildirishnomalari soatda","Qadam va faollikni hisoblaydi","Bir necha xil tasma","Zaryadi uzoq saqlanadi"],oqim:""},
+ {n:"Portativ blender (shaker)",c:"Uy-ro'zg'or",p:129000,o:229000,e:"🥤",hit:0,
+  d:"Smuzi, kokteyl va sho'rvalar uchun ixcham zaryadlanadigan blender-shisha.",
+  f:["USB orqali zaryadlanadi","Ish joyi, sport zali va safar uchun","Yuvish oson","Tez maydalaydi"],oqim:""},
+ {n:"Yuz uchun massaj roller",c:"Go'zallik",p:79000,o:149000,e:"🧴",hit:0,
+  d:"Kundalik yuz parvarishi uchun qulay massaj roller. Krem yoki serum bilan foydalaning.",
+  f:["Kundalik parvarishga qulay","Yengil va ixcham","Krem bilan birga ishlatiladi","Sovitib ishlatish mumkin"],oqim:""},
+ {n:"Muallimi Soniy (Tajvid qoidalari bilan)",c:"Kitoblar",p:55999,o:59000,e:"📖",hit:0,
+  d:"Arab tili va tajvid qoidalarini o'rganib, Qur'on o'qishni o'rganish uchun kitob. QR-kod orqali audio ham eshitish mumkin.",
+  f:["Arab tili va tajvid qoidalari","QR-kod orqali audio (Ustoz Shayx Alijon qori)","O'zbekiston bo'ylab yetkazib berish","Olganda to'lov"],oqim:"https://alijahon.uz/oqim/83246"}
+];
+// =============================================================================
+var $=function(i){return document.getElementById(i)};
+function fmt(x){return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,' ')+" so'm"}
+$('lg').innerHTML=CFG.shop.replace(/^(\S+)/,'$1<b></b>').replace('<b></b>','')+'';
+$('lg').textContent=CFG.shop;$('ft').textContent='© 2026 '+CFG.shop+' · Barcha huquqlar himoyalangan';
+$('tel').href='tel:'+CFG.phone;
+var cats=['Hammasi'],cur='Hammasi',cp=null;
+function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function vis(x){return x.im?'<img class="pim" src="'+esc(x.im)+'" alt="" loading="lazy">':esc(x.e||'🛍️')}
+function disc(x){return x.o>x.p?Math.round((1-x.p/x.o)*100):0}
+// Faqat oqimi bor mahsulotlar ko'rsatiladi (aks holda buyurtma alijahon.uz'ga tushmaydi)
+function setP(list){P=list.filter(function(x){return x&&x.n&&x.p>0&&sid(x)});
+ cats=['Hammasi'].concat(P.map(function(x){return x.c}).filter(function(v,i,a){return v&&a.indexOf(v)===i}));if(cats.indexOf(cur)<0)cur='Hammasi'}
+function bar(){$('bar').innerHTML=cats.map(function(c){return '<button class="chip'+(c===cur?' on':'')+'" data-c="'+c+'">'+c+'</button>'}).join('')}
+function grid(){
+ var q=$('q').value.trim().toLowerCase(),s=$('so').value;
+ var l=P.filter(function(x){return(cur==='Hammasi'||x.c===cur)&&(!q||x.n.toLowerCase().indexOf(q)>-1)});
+ if(s==='1')l.sort(function(a,b){return a.p-b.p});if(s==='2')l.sort(function(a,b){return b.p-a.p});
+ $('empty').style.display=l.length?'none':'block';
+ $('grid').innerHTML=l.map(function(x){var i=P.indexOf(x),d=disc(x);
+  return '<div class="p" data-v="'+i+'">'+(d?'<span class="sale">-'+d+'%</span>':'')+(x.hit?'<span class="hit">🔥 Mashhur</span>':'')+'<div class="img">'+vis(x)+'</div><div class="b"><small>'+esc(x.c)+'</small><h3>'+esc(x.n)+'</h3><div class="pr"><b>'+fmt(x.p)+'</b>'+(x.o>x.p?'<s>'+fmt(x.o)+'</s>':'')+'</div>'+(d?'<div class="cd" data-cd data-p="⏳ " hidden></div>':'')+'<button class="btn" data-i="'+i+'">Buyurtma berish</button></div></div>'}).join('');tick()}
+$('bar').onclick=function(e){var c=e.target.getAttribute('data-c');if(c){cur=c;bar();grid()}};
+$('q').oninput=grid;$('so').onchange=grid;
+function sid(x){var m=/(\d+)\/?\s*$/.exec(x.oqim||'');return m?m[1]:''}
+function order(x){if(x.oqim&&!(CFG.api&&sid(x))){var w=window.open(x.oqim,'_blank');if(!w)location.href=x.oqim;return}
+ try{var sv=JSON.parse(localStorage.getItem('sv_f')||'{}');if(sv.n&&!$('nm').value)$('nm').value=sv.n;if(sv.t&&(!ph.value||ph.value.length<6))ph.value=sv.t;if(sv.r)$('rg').value=sv.r}catch(e){}
+ cp=x;$('mt').textContent=x.n;$('mp').textContent=fmt(x.p);$('fw').style.display='block';$('er').textContent='';$('ov').classList.add('on')}
+$('grid').onclick=function(e){var b=e.target.getAttribute('data-i');if(b!==null){order(P[b]);return}
+ var c=e.target.closest('[data-v]');if(c)show(P[c.getAttribute('data-v')])};
+function show(x){cp=x;var d=Math.round((1-x.p/x.o)*100);
+ $('di').innerHTML=vis(x);$('dc').textContent=x.c;$('dn').textContent=x.n;$('dd').textContent=x.d;$('dp').textContent=fmt(x.p);$('do').textContent=x.o>x.p?fmt(x.o):'';
+ $('df').innerHTML=x.f.map(function(t){return '<li>'+t+'</li>'}).join('');
+ $('sbtn').textContent='🛒 Buyurtma berish — '+fmt(x.p);
+ $('dcd').setAttribute('data-off',disc(x)?'0':'1');$('fab').classList.add('up');tick();
+ $('home').style.display='none';$('dv').style.display='block';$('stk').style.display='block';window.scrollTo(0,0)}
+function home(){$('fab').classList.remove('up');$('dv').style.display='none';$('stk').style.display='none';$('home').style.display='block';window.scrollTo(0,0)}
+$('bk').onclick=home;$('lg').onclick=home;
+$('dbtn').onclick=function(){order(cp)};$('sbtn').onclick=function(){order(cp)};
+function close(){$('ov').classList.remove('on')}
+// Buyurtmadan keyingi alohida "Rahmat" oynasi
+function thanks(x,n,t,r){
+ $('tyh').textContent='Rahmat, '+(n.split(/\s+/)[0]||'')+'!';
+ $('tyi').innerHTML=vis(x);$('tyn').textContent=x.n;$('typ').textContent=fmt(x.p);
+ $('tya').textContent=n;$('tyt').textContent=t;$('tyr').textContent=r;
+ close();$('ty').classList.add('on')}
+$('tyx').onclick=function(){$('ty').classList.remove('on')};
+$('tyb').onclick=function(){$('ty').classList.remove('on');home()};
+$('ty').onclick=function(e){if(e.target===$('ty'))$('ty').classList.remove('on')};
+$('cl').onclick=close;$('ov').onclick=function(e){if(e.target===$('ov'))close()};
+var ph=$('ph');
+$('fw').onkeydown=function(e){if(e.key==='Enter'&&e.target.tagName!=='SELECT'){e.preventDefault();$('go').click()}};
+ph.oninput=function(){var v=ph.value.replace(/\D/g,'');if(v.indexOf('998')===0)v=v.slice(3);v=v.slice(0,9);
+ var o='+998';if(v.length)o+=' '+v.slice(0,2);if(v.length>2)o+=' '+v.slice(2,5);if(v.length>5)o+=' '+v.slice(5,7);if(v.length>7)o+=' '+v.slice(7,9);ph.value=o};
+ph.onfocus=function(){if(!ph.value)ph.value='+998 '};
+$('go').onclick=function(){
+ var n=$('nm').value.trim(),t=ph.value,r=$('rg').value,btn=$('go');
+ if(n.length<2){$('er').textContent='Iltimos, ismingizni kiriting';return}
+ if(t.replace(/\D/g,'').length<12){$('er').textContent="Telefon raqamni to'liq kiriting";return}
+ function done(){
+  try{localStorage.setItem('sv_f',JSON.stringify({n:n,t:t,r:r}))}catch(e){}
+  thanks(cp,n,t,r)}
+ var st=sid(cp);
+ if(CFG.api&&st){
+  btn.disabled=true;btn.textContent='Yuborilmoqda...';$('er').textContent='';
+  fetch(CFG.api,{method:'POST',headers:{'Content-Type':'application/json'},
+   body:JSON.stringify({full_name:n,phone_number:'+'+t.replace(/\D/g,''),stream:st})})
+  .then(function(res){return res.json().catch(function(){return{}}).then(function(j){return{ok:res.ok,s:res.status,j:j}})})
+  .then(function(o){btn.disabled=false;btn.textContent='✅ Buyurtmani tasdiqlash';
+   if(o.ok)done();else $('er').textContent=o.s===400?"Ism yoki telefon noto'g'ri. Tekshirib, qayta urinib ko'ring":"Hozir yuborib bo'lmadi. Qayta urinib ko'ring yoki qo'ng'iroq qiling: "+CFG.phone})
+  .catch(function(){btn.disabled=false;btn.textContent='✅ Buyurtmani tasdiqlash';$('er').textContent="Internet xatosi. Qayta urinib ko'ring"});
+  return}
+ var msg="🛒 Yangi buyurtma\nMahsulot: "+cp.n+"\nNarx: "+fmt(cp.p)+"\nIsm: "+n+"\nTel: "+t+"\nHudud: "+r;
+ done();
+ if(CFG.tg)window.open('https://t.me/'+CFG.tg.replace('@','')+'?text='+encodeURIComponent(msg),'_blank')};
+// Mahsulotlar admin panelidan (/api/products) olinadi; ishlamasa fayldagi ro'yxat ishlatiladi
+function route(){try{var m=/^#p(\d+)$/.exec(location.hash);if(m&&P[m[1]-1]){var x=P[m[1]-1];show(x);$('bk').style.display='none';promo(x)}}catch(e){}}
+function loadP(){
+ var ctl=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(ctl)ctl.abort()},4000);
+ return fetch('/api/products',ctl?{signal:ctl.signal}:{}).then(function(r){return r.ok?r.json():null})
+  .then(function(d){clearTimeout(tm);return Array.isArray(d)?d:null}).catch(function(){return null})}
+// Reklama havolasi: ...#p1, #p2, ... — mijoz to'g'ridan-to'g'ri shu mahsulot sahifasiga tushadi
+loadP().then(function(d){setP(d||P);bar();grid();route()});
+// ===== CHEGIRMA TAYMERI =====
+// AKSIYA_TUGASH: aniq tugash sanasi, masalan "2026-10-31T23:59" (Toshkent vaqti). Bo'sh bo'lsa va AKSIYA_KUNLIK=true bo'lsa,
+// taymer har kuni Toshkent vaqti bilan 00:00 gacha sanaydi va ertasi kuni qayta boshlanadi.
+// Ikkalasi ham bo'sh/false bo'lsa taymer chiqmaydi. Chegirma haqiqatan shu vaqtda tugashi/yangilanishi kerak.
+var AKSIYA_TUGASH="";
+var AKSIYA_KUNLIK=true;
+function aksEnd(){
+ if(AKSIYA_TUGASH){var q=AKSIYA_TUGASH;if(q.length===10)q+="T23:59:59";if(!/(Z|[+-]\d\d:?\d\d)$/.test(q))q+="+05:00";var e=new Date(q).getTime();return isNaN(e)?0:e}
+ if(AKSIYA_KUNLIK){var T=5*36e5,D=864e5;return Math.floor((Date.now()+T)/D+1)*D-T}
+ return 0}
+function pad(n){return n<10?"0"+n:""+n}
+function tick(){var e=aksEnd(),d=e-Date.now(),on=e&&d>0,t="",els=document.querySelectorAll('[data-cd]');
+ if(on){var k=d/864e5|0,h=d%864e5/36e5|0,m=d%36e5/6e4|0,c=d%6e4/1e3|0;t=(k?k+" kun ":"")+pad(h)+":"+pad(m)+":"+pad(c)}
+ for(var i=0;i<els.length;i++){var el=els[i];el.hidden=!on||el.getAttribute('data-off')==='1';if(on)el.textContent=(el.getAttribute('data-p')||"⏳ Chegirma tugashiga: ")+t}}
+setInterval(tick,1000);
+
+// ===== MIJOZ SHARHLARI (faqat HAQIQIY sharhlarni yozing; bo'sh bo'lsa bo'lim ko'rinmaydi) =====
+// Namuna: {n:"Aziz, Toshkent",t:"Tez yetkazib berishdi, mahsulot yoqdi",s:5}
+var SHARHLAR=[];
+(function(){if(!SHARHLAR.length)return;
+ $('rvl').innerHTML=SHARHLAR.map(function(r){return '<div><b>'+esc(r.n)+'</b><i>'+"★★★★★".slice(0,Math.max(1,Math.min(5,r.s||5)))+'</i><p>'+esc(r.t)+'</p></div>'}).join('');$('rvs').hidden=false})();
+
+// ===== QAYTARISH SHARTI (haqiqiy shartingizni yozing; bo'sh bo'lsa eski matn qoladi) =====
+// Masalan: "Mahsulot sifatsiz yoki nuqsonli bo'lsa, 3 kun ichida almashtirib beramiz."
+var QAYTARISH="";
+if(QAYTARISH)$('qp').textContent=QAYTARISH;
+
+// ===== BUGUN NECHTA BUYURTMA (haqiqiy hisoblagich, /api/today) =====
+fetch('/api/today').then(function(r){return r.ok?r.json():null}).then(function(d){
+ if(d&&d.n>=5){var l=document.querySelectorAll('.tdy');for(var i=0;i<l.length;i++){l[i].textContent='🔥 Bugun '+d.n+' kishi buyurtma berdi';l[i].hidden=false}}}).catch(function(){});
+
+// ===== ALOQA TUGMALARI =====
+$('fcall').href='tel:'+CFG.phone;
+if(CFG.tg){$('ftg').href='https://t.me/'+CFG.tg.replace('@','');$('ftg').hidden=false}
+
+function promo(x){
+ $('pb').textContent=disc(x)?'🔥 AKSIYA −'+disc(x)+'%':'🔥 TAKLIF';$('pi').innerHTML=vis(x);$('pn').textContent=x.n;
+ $('pp').textContent=fmt(x.p);$('po').textContent=x.o>x.p?fmt(x.o):'';
+ $('pf').innerHTML=x.f.slice(0,3).map(function(t){return '<li>✅ '+t+'</li>'}).join('');
+ $('tm').setAttribute('data-off',disc(x)?'0':'1');tick();
+ $('pm').classList.add('on');
+ $('pcl').onclick=$('plk').onclick=function(){$('pm').classList.remove('on')};
+ $('pbtn').onclick=function(){$('pm').classList.remove('on');order(x)}}
+</script>
+</body>
+</html>
