@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin — mahsulotlar</title>
+<style>
+:root{--bg:#181818;--card:#222;--tx:#fff;--mut:#9a9a9a;--pr:#ab9ff2;--bd:#2e2e2e;--red:#e5383b;--ok:#6fcf97;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:90px}
+.w{max-width:720px;margin:auto;padding:0 14px}
+h1{font-size:20px;margin:0}
+header{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+button{font:inherit;cursor:pointer;border:0;border-radius:12px;color:var(--tx);background:#2e2e2e;padding:10px 14px}
+button.pr{background:var(--pr);color:#181818;font-weight:700}
+button.dg{color:var(--red)}
+input,textarea,select{width:100%;padding:12px;border-radius:12px;border:1px solid #333;background:#2a2a2a;color:#fff;font:inherit}
+textarea{min-height:84px;resize:vertical}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 5px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:12px;margin-bottom:10px}
+.row{display:flex;gap:10px;align-items:center}
+.th{width:54px;height:54px;border-radius:12px;background:#322d5c;display:grid;place-items:center;font-size:28px;overflow:hidden;flex:none}
+.th img{width:100%;height:100%;object-fit:cover}
+.nm{font-weight:700;line-height:1.25}.sub{color:var(--mut);font-size:13px}
+.bad{color:var(--red)}.good{color:var(--ok)}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.acts button{padding:8px 11px;font-size:14px}
+.sw{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--mut)}
+.sw input{width:auto}
+.hint{color:var(--mut);font-size:13px;margin:4px 0 0}
+#login{max-width:380px;margin:18vh auto 0;padding:0 14px}
+.ov{position:fixed;inset:0;background:#000b;display:none;align-items:flex-end;justify-content:center;z-index:20}
+.ov.on{display:flex}
+.sh{background:#222;width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:22px 22px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px))}
+@media(min-width:600px){.ov{align-items:center}.sh{border-radius:22px}}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.err{color:var(--red);font-size:14px;min-height:20px;margin-top:8px}
+#bar{position:fixed;left:0;right:0;bottom:0;background:#181818;border-top:1px solid var(--bd);padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));text-align:center;font-size:14px;color:var(--mut);z-index:10}
+</style>
+</head>
+<body>
 
+<div id="login">
+ <h1>🔐 Admin</h1>
+ <label for="pw">Parol</label>
+ <input id="pw" type="password" autocomplete="current-password" placeholder="Admin paroli">
+ <div class="err" id="lerr"></div>
+ <button class="pr" id="lgo" style="width:100%;margin-top:6px">Kirish</button>
+</div>
+
+<div id="app" style="display:none">
+ <div class="w">
+  <header><h1>🛍️ Mahsulotlar</h1><button class="pr" id="add">+ Yangi</button></header>
+  <p class="hint" style="margin:0 0 12px">Faqat <b>oqimi bor</b> va <b>faol</b> mahsulotlar saytda ko'rinadi. O'zgarish avtomatik saqlanadi.</p>
+  <div id="list"></div>
+  <button id="out" style="margin:14px 0">Chiqish</button>
+ </div>
+</div>
+<div id="bar" style="display:none"></div>
+
+<div class="ov" id="ov"><div class="sh">
+ <div class="row" style="justify-content:space-between"><h1 id="ft">Mahsulot</h1><button id="fx">✕</button></div>
+ <label>Nomi *</label><input id="n" maxlength="120">
+ <label>Oqim ID yoki havolasi *</label><input id="oqim" inputmode="text" placeholder="83246 yoki https://alijahon.uz/oqim/83246">
+ <p class="hint">alijahon.uz kabinetida shu mahsulot uchun yaratilgan oqim.</p>
+ <div class="two">
+  <div><label>Narxi (so'm) *</label><input id="p" inputmode="numeric"></div>
+  <div><label>Eski narx (ixtiyoriy)</label><input id="o" inputmode="numeric"></div>
+ </div>
+ <label>Kategoriya</label><input id="c" list="cats" maxlength="40" placeholder="Masalan: Kitoblar"><datalist id="cats"></datalist>
+ <div class="two">
+  <div><label>Emoji</label><input id="e" maxlength="8" placeholder="📖"></div>
+  <div><label>Rasm havolasi</label><input id="im" inputmode="url" placeholder="https://..."></div>
+ </div>
+ <p class="hint">Rasm havolasi bo'lsa, emoji o'rniga rasm chiqadi (alijahon.uz'dagi mahsulot rasmining havolasini qo'yishingiz mumkin).</p>
+ <label>Tavsif</label><textarea id="d" maxlength="1000"></textarea>
+ <label>Xususiyatlar (har qatorda bitta)</label><textarea id="f"></textarea>
+ <div class="row" style="margin-top:12px;gap:18px">
+  <label style="margin:0;display:flex;gap:8px;align-items:center"><input id="hit" type="checkbox" style="width:auto"> 🔥 Mashhur</label>
+  <label style="margin:0;display:flex;gap:8px;align-items:center"><input id="act" type="checkbox" style="width:auto"> Faol</label>
+ </div>
+ <div class="err" id="ferr"></div>
+ <button class="pr" id="fs" style="width:100%;margin-top:6px">Saqlash</button>
+</div></div>
+
+<script>
+var $=function(i){return document.getElementById(i)};
+function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function fmt(x){return String(x).replace(/\B(?=(\d{3})+(?!\d))/g,' ')+" so'm"}
+var DEFAULTS=[{n:"Muallimi Soniy (Tajvid qoidalari bilan)",c:"Kitoblar",p:55999,o:59000,e:"📖",im:"",hit:0,active:true,
+ d:"Arab tili va tajvid qoidalarini o'rganib, Qur'on o'qishni o'rganish uchun kitob. QR-kod orqali audio ham eshitish mumkin.",
+ f:["Arab tili va tajvid qoidalari","QR-kod orqali audio (Ustoz Shayx Alijon qori)","O'zbekiston bo'ylab yetkazib berish","Olganda to'lov"],
+ oqim:"https://alijahon.uz/oqim/83246"}];
+var items=[],pw='',editing=-1,chain=Promise.resolve();
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}}
+function oid(x){var m=/(\d{3,12})\s*\/?\s*$/.exec(x.oqim||'');return m?m[1]:''}
+function live(x){return x.active!==false&&oid(x)&&x.p>0}
+function status(t,c){var b=$('bar');b.style.display='block';b.style.color=c||'var(--mut)';b.textContent=t}
+
+function api(method,body){
+ return fetch('/api/products',{method:method,headers:{'x-admin-password':pw,'Content-Type':'application/json'},cache:'no-store',body:body?JSON.stringify(body):undefined})
+  .then(function(r){return r.json().catch(function(){return{}}).then(function(j){return{s:r.status,j:j}})})}
+
+function login(p){
+ pw=p;$('lerr').textContent='';
+ return api('GET').then(function(o){
+  if(o.s===401){$('lerr').textContent="Parol noto'g'ri";store('adm',null);return}
+  if(o.s!==200){$('lerr').textContent=(o.j&&o.j.error)||'Xatolik ('+o.s+')';return}
+  store('adm',p);
+  items=Array.isArray(o.j.items)?o.j.items:DEFAULTS.slice();
+  $('login').style.display='none';$('app').style.display='block';render();
+  if(!Array.isArray(o.j.items))save();
+ }).catch(function(){$('lerr').textContent='Internet xatosi'})}
+
+function save(){
+ status('Saqlanmoqda...');
+ chain=chain.then(function(){return api('POST',{items:items})}).then(function(o){
+  if(o.s===200)status('✓ Saqlandi',"var(--ok)");
+  else status((o.j&&o.j.error)||'Saqlanmadi ('+o.s+')','var(--red)')
+ }).catch(function(){status('Internet xatosi — saqlanmadi','var(--red)')})}
+
+function render(){
+ var n=0;
+ $('list').innerHTML=items.length?items.map(function(x,i){
+  var num=live(x)?++n:0;
+  return '<div class="card"><div class="row"><div class="th">'+(x.im?'<img src="'+esc(x.im)+'" alt="">':esc(x.e||'🛍️'))+'</div>'
+  +'<div style="min-width:0"><div class="nm">'+esc(x.n)+'</div><div class="sub">'+fmt(x.p)+(x.o>x.p?' · <s>'+fmt(x.o)+'</s>':'')+'</div>'
+  +'<div class="sub '+(oid(x)?'good':'bad')+'">'+(oid(x)?'oqim: '+oid(x):'oqim yo\'q — saytda ko\'rinmaydi')+'</div></div>'
+  +'<label class="sw"><input type="checkbox" data-t="'+i+'"'+(x.active!==false?' checked':'')+'> Faol</label></div>'
+  +'<div class="acts"><button data-e="'+i+'">✏️ Tahrir</button><button data-u="'+i+'">↑</button><button data-d="'+i+'">↓</button>'
+  +(num?'<button data-l="'+num+'">🔗 Reklama havolasi #p'+num+'</button>':'')
+  +'<button class="dg" data-x="'+i+'">🗑</button></div></div>'}).join('')
+  :'<div class="card sub">Mahsulot yo\'q. «+ Yangi» ni bosing.</div>';
+}
+
+$('list').onclick=function(e){
+ var t=e.target,g=function(a){return t.getAttribute(a)};
+ if(g('data-e')!==null)return openForm(+g('data-e'));
+ if(g('data-u')!==null){var i=+g('data-u');if(i>0){var a=items[i];items[i]=items[i-1];items[i-1]=a;render();save()}return}
+ if(g('data-d')!==null){var j=+g('data-d');if(j<items.length-1){var b=items[j];items[j]=items[j+1];items[j+1]=b;render();save()}return}
+ if(g('data-x')!==null){var k=+g('data-x');if(confirm('«'+items[k].n+'» o\'chirilsinmi?')){items.splice(k,1);render();save()}return}
+ if(g('data-l')!==null){var url=location.origin+'/#p'+g('data-l');
+  (navigator.clipboard?navigator.clipboard.writeText(url):Promise.reject()).then(function(){status('Nusxalandi: '+url,'var(--ok)')},function(){prompt('Havola:',url)});return}
+ if(g('data-t')!==null){items[+g('data-t')].active=t.checked;render();save()}
+};
+
+function openForm(i){
+ editing=i;var x=i>=0?items[i]:{active:true};
+ $('ft').textContent=i>=0?'Tahrirlash':'Yangi mahsulot';
+ $('n').value=x.n||'';$('oqim').value=oid(x)||'';$('p').value=x.p||'';$('o').value=x.o||'';$('c').value=x.c||'';
+ $('e').value=x.e||'';$('im').value=x.im||'';$('d').value=x.d||'';$('f').value=(x.f||[]).join('\n');
+ $('hit').checked=!!x.hit;$('act').checked=x.active!==false;$('ferr').textContent='';
+ $('cats').innerHTML=items.map(function(y){return y.c}).filter(function(v,k,a){return v&&a.indexOf(v)===k}).map(function(v){return '<option value="'+esc(v)+'">'}).join('');
+ $('ov').classList.add('on')}
+$('add').onclick=function(){openForm(-1)};
+$('fx').onclick=function(){$('ov').classList.remove('on')};
+$('ov').onclick=function(e){if(e.target===$('ov'))$('ov').classList.remove('on')};
+$('fs').onclick=function(){
+ var n=$('n').value.trim(),p=parseInt($('p').value.replace(/\D/g,''),10)||0,o=parseInt($('o').value.replace(/\D/g,''),10)||0,
+  q=$('oqim').value.trim(),m=/(\d{3,12})\s*\/?\s*$/.exec(q),im=$('im').value.trim();
+ var er='';
+ if(n.length<2)er='Mahsulot nomini kiriting';
+ else if(!m)er='Oqim ID yoki havolasini kiriting (masalan 83246)';
+ else if(p<=0)er='Narxni kiriting';
+ else if(o&&o<=p)er='Eski narx hozirgi narxdan katta bo\'lishi kerak (yoki bo\'sh qoldiring)';
+ else if(im&&!/^(https?:\/\/|\/)/.test(im))er='Rasm havolasi https:// bilan boshlansin';
+ if(er){$('ferr').textContent=er;return}
+ var x={n:n,c:$('c').value.trim(),p:p,o:o,e:$('e').value.trim(),im:im,d:$('d').value.trim(),
+  f:$('f').value.split('\n').map(function(t){return t.trim()}).filter(Boolean),
+  oqim:'https://alijahon.uz/oqim/'+m[1],hit:$('hit').checked,active:$('act').checked};
+ if(editing>=0)items[editing]=x;else items.push(x);
+ $('ov').classList.remove('on');render();save()};
+
+$('lgo').onclick=function(){login($('pw').value)};
+$('pw').onkeydown=function(e){if(e.key==='Enter')login($('pw').value)};
+$('out').onclick=function(){store('adm',null);location.reload()};
+var saved=store('adm');if(saved){$('pw').value=saved;login(saved)}
+</script>
+</body>
+</html>
