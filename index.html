@@ -116,6 +116,18 @@ input,select{background:#2a2a2a;border-color:#333;color:#fff}
 /* oynalar ekran o'rtasida */
 .ov{align-items:center;padding:16px}.md{border-radius:22px;max-height:90vh;overflow-y:auto}
 </style>
+<!-- Meta Pixel: PIXEL_ID ni o'zingiznikiga almashtiring -->
+<script>
+var PIXEL_ID="2164627230926549";
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+if(PIXEL_ID.indexOf("PIXEL_ID")<0){fbq('init',PIXEL_ID);fbq('track','PageView')}
+function px(ev,x){try{if(!window.fbq||PIXEL_ID.indexOf("PIXEL_ID")>=0)return;
+ fbq('track',ev,x?{content_name:x.n,content_category:x.c,value:x.p,currency:'UZS'}:undefined)}catch(e){}}
+</script>
 </head>
 <body>
 <div class="top">🚚 Butun O'zbekiston bo'ylab yetkazib berish · Olganda to'lov</div>
@@ -240,10 +252,10 @@ $('q').oninput=grid;$('so').onchange=grid;
 function sid(x){var m=/(\d+)\/?\s*$/.exec(x.oqim||'');return m?m[1]:''}
 function order(x){if(x.oqim&&!(CFG.api&&sid(x))){var w=window.open(x.oqim,'_blank');if(!w)location.href=x.oqim;return}
  try{var sv=JSON.parse(localStorage.getItem('sv_f')||'{}');if(sv.n&&!$('nm').value)$('nm').value=sv.n;if(sv.t&&(!ph.value||ph.value.length<6))ph.value=sv.t;if(sv.r)$('rg').value=sv.r}catch(e){}
- cp=x;$('mt').textContent=x.n;$('mp').textContent=fmt(x.p);$('fw').style.display='block';$('er').textContent='';$('ov').classList.add('on')}
+ px('InitiateCheckout',x);cp=x;$('mt').textContent=x.n;$('mp').textContent=fmt(x.p);$('fw').style.display='block';$('er').textContent='';$('ov').classList.add('on')}
 $('grid').onclick=function(e){var b=e.target.getAttribute('data-i');if(b!==null){order(P[b]);return}
  var c=e.target.closest('[data-v]');if(c)show(P[c.getAttribute('data-v')])};
-function show(x){cp=x;var d=Math.round((1-x.p/x.o)*100);
+function show(x){cp=x;px('ViewContent',x);var d=Math.round((1-x.p/x.o)*100);
  $('di').innerHTML=vis(x);$('dc').textContent=x.c;$('dn').textContent=x.n;$('dd').textContent=x.d;$('dp').textContent=fmt(x.p);$('do').textContent=x.o>x.p?fmt(x.o):'';
  $('df').innerHTML=x.f.map(function(t){return '<li>'+t+'</li>'}).join('');
  $('sbtn').textContent='🛒 Buyurtma berish — '+fmt(x.p);
@@ -273,6 +285,7 @@ $('go').onclick=function(){
  if(n.length<2){$('er').textContent='Iltimos, ismingizni kiriting';return}
  if(t.replace(/\D/g,'').length<12){$('er').textContent="Telefon raqamni to'liq kiriting";return}
  function done(){
+  px('Lead',cp);
   try{localStorage.setItem('sv_f',JSON.stringify({n:n,t:t,r:r}))}catch(e){}
   thanks(cp,n,t,r)}
  var st=sid(cp);
