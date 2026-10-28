@@ -113,8 +113,57 @@ input,select{background:#2a2a2a;border-color:#333;color:#fff}
 .fab{position:fixed;right:12px;bottom:18px;display:flex;flex-direction:column;gap:8px;z-index:10}.fab.up{bottom:84px}
 .fab a{display:block;text-decoration:none;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:99px;padding:10px 14px;font:700 13.5px inherit;font-family:inherit;box-shadow:0 6px 18px #0004}
 @media(min-width:760px){.fab.up{bottom:18px}}
+/* 3-dizayn: ro'yxat kartalar */
+.hero{display:none}
+.trust{display:flex;gap:8px;margin:4px 0 12px}
+.trust div{flex:1;background:var(--card);border-radius:16px;padding:10px 6px;text-align:center;color:var(--pr);font-weight:700;font-size:11.5px;line-height:1.3}
+.trust svg{display:block;margin:0 auto 4px}.trust span{color:#e6e6e6}
+.tools{margin-bottom:10px}
+.tools input,.tools select{height:48px;border-radius:16px;border:0;padding:0 14px}
+.bar{margin-bottom:12px}
+.grid,.grid{grid-template-columns:minmax(0,1fr);gap:10px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.p{flex-direction:row;gap:12px;padding:10px;border:0;border-radius:22px;min-height:112px}
+.p .img{width:92px;height:92px;aspect-ratio:auto;border-radius:16px;font-size:40px;flex:none;align-self:flex-start}
+.p .sale{top:16px;left:16px;font-size:11px;padding:3px 8px;background:#fff;color:#181818}
+.p .b{padding:0;gap:2px;min-width:0}
+.p .b small{font-size:12px}.p .b h3{font-size:15px}
+.p .meta{color:var(--mut);font-size:12px;font-weight:600}
+.p .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:6px}
+.p .pr{margin:0}.p .pr b{display:block;font-size:16px;line-height:1.2}.p .pr s{display:block;margin:0;font-size:12px}
+.p .btn{width:auto;margin:0;height:40px;padding:0 14px;font-size:13px;border-radius:12px;box-shadow:none;flex:none}
+.p .cd{font-size:11.5px;margin:2px 0 0}
 /* oynalar ekran o'rtasida */
 .ov{align-items:center;padding:16px}.md{border-radius:22px;max-height:90vh;overflow-y:auto}
+</style>
+<style id="ordcss">
+#ov{background:#000b;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+#ov .md{max-width:420px;background:linear-gradient(180deg,#1f1f23,#171719);border:1px solid #2a2a30;border-radius:28px;padding:18px;box-shadow:0 24px 70px #000,0 0 80px #ab9ff218}
+#ov .x{right:14px;top:14px;width:32px;height:32px;border-radius:50%;background:#2a2a2f;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0}
+.otop{display:flex;gap:12px;align-items:center;padding-right:36px}
+.oim{width:56px;height:56px;border-radius:16px;flex:none;position:relative;overflow:hidden;display:grid;place-items:center;font-size:30px;background:linear-gradient(135deg,#3a3270,#1d1a38);box-shadow:0 8px 20px #7c6cf033}
+.oim .pim{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#ov .otop h3{font-size:15px;line-height:1.25;margin:0}
+.opr{display:flex;align-items:baseline;gap:6px;margin-top:3px;flex-wrap:wrap}.opr strong{color:#ab9ff2;font-size:16px}.opr s{color:var(--mut);font-size:12px}
+.obd{background:#e5383b;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:99px}
+.fl{position:relative;margin-top:12px}
+.fl .ic{position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;display:flex}.fl .ic svg{stroke:#8e8e96}
+.fl input,.fl select{width:100%;max-width:100%;display:block;height:54px;border-radius:16px;background:#232327;border:1.5px solid #2c2c31;padding:0 14px 0 46px;font-size:15px;color:#fff;-webkit-appearance:none;appearance:none}
+.fl select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%238e8e96' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.fl input:focus,.fl select:focus{outline:0;border-color:#ab9ff2;background-color:#262530;box-shadow:0 0 0 4px #ab9ff222}
+.fl:focus-within .ic svg{stroke:#ab9ff2}
+.orow{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+.qty{display:flex;align-items:center;gap:4px;background:#232327;border-radius:14px;padding:4px}
+.qty button{width:32px;height:32px;border:0;border-radius:10px;background:#2f2f35;color:#fff;font-size:18px;cursor:pointer;font-family:inherit}
+.qty b{min-width:26px;text-align:center;font-size:14px}
+.tot{text-align:right}.tot small{color:var(--mut);font-size:11px;display:block}.tot b{font-size:19px}
+.odl{margin-top:12px;display:flex;align-items:center;gap:10px;background:#1d2a22;color:#9fe0bb;border-radius:14px;padding:10px 12px;font-size:12.5px;line-height:1.4}
+.odl svg{flex:none;stroke:#6fcf97}
+#ov .err{margin-top:8px;min-height:0}#ov .err:empty{display:none}
+#ov .btn{font-weight:700;font-family:inherit;height:58px;border-radius:18px;font-size:16.5px;margin-top:14px;background:linear-gradient(90deg,#b8aef7,#9a8cf0);box-shadow:0 10px 26px #ab9ff238}
+#ov .btn:disabled{opacity:.7}
+.otr{text-align:center;margin-top:11px;font-size:11.5px;color:var(--mut)}
+@media(max-height:640px){.odl{display:none}}
 </style>
 <!-- Meta Pixel: PIXEL_ID ni o'zingiznikiga almashtiring -->
 <script>
@@ -135,8 +184,8 @@ function px(ev,x){try{if(!window.fbq||PIXEL_ID.indexOf("PIXEL_ID")>=0)return;
 <header><div class="logo" id="lg"></div><a class="tel" id="tel" href="#">📞 Qo'ng'iroq</a></header>
 
 <div id="home">
- <div class="hero"><h1>Foydali mahsulotlar — qulay narxlarda</h1><p>Mahsulotni tanlang, ism va telefon raqamingizni qoldiring. Operator siz bilan bog'lanadi.</p>
- <div class="tags"><span>🚚 Tez yetkazish</span><span>💵 Olganda to'lov</span><span>☎️ Operator yordami</span><span class="tdy" hidden></span></div></div>
+ <div class="trust"><div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7zM5.5 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18.5 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg><span>Tez yetkazish</span></div><div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Olganda to'lov</span></div><div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Operator yordami</span></div></div>
+ <div class="tdy" hidden style="text-align:center;color:var(--mut);font-size:13px;margin:-4px 0 10px"></div>
  <div class="tools"><input id="q" placeholder="🔍 Mahsulot qidirish..."><select id="so"><option value="0">Mashhur</option><option value="1">Arzonroq</option><option value="2">Qimmatroq</option></select></div>
  <div class="bar" id="bar"></div>
  <div class="grid" id="grid"></div><div class="empty" id="empty">Hech narsa topilmadi</div>
@@ -169,13 +218,16 @@ function px(ev,x){try{if(!window.fbq||PIXEL_ID.indexOf("PIXEL_ID")>=0)return;
  <div class="dprice" style="justify-content:center"><b id="pp"></b><s id="po"></s></div>
  <div class="tm" id="tm" data-cd data-off="1" hidden></div><ul id="pf"></ul>
  <button class="btn" id="pbtn">🛒 Buyurtma berish</button><button class="lk" id="plk">Batafsil ma'lumot</button></div></div>
-<div class="ov" id="ov"><div class="md"><button class="x" id="cl" aria-label="Yopish">×</button>
- <div id="fw"><h3 id="mt"></h3><div class="sm" id="mp"></div>
-  <label for="nm">Ismingiz</label><input id="nm" placeholder="Masalan: Aziz" autocomplete="name">
-  <label for="ph">Telefon raqamingiz</label><input id="ph" type="tel" inputmode="numeric" placeholder="+998 90 123 45 67" autocomplete="tel">
-  <label for="rg">Viloyat</label>
-  <select id="rg" style="max-width:100%;width:100%"><option>Toshkent shahri</option><option>Toshkent viloyati</option><option>Samarqand</option><option>Buxoro</option><option>Farg'ona</option><option>Andijon</option><option>Namangan</option><option>Qashqadaryo</option><option>Surxondaryo</option><option>Xorazm</option><option>Navoiy</option><option>Jizzax</option><option>Sirdaryo</option><option>Qoraqalpog'iston</option></select>
-  <div class="err" id="er"></div><button class="btn" id="go">✅ Buyurtmani tasdiqlash</button></div>
+<div class="ov" id="ov"><div class="md" role="dialog" aria-modal="true"><button class="x" id="cl" aria-label="Yopish">×</button>
+ <div id="fw">
+  <div class="otop"><div class="oim" id="oim"></div><div><h3 id="mt"></h3><div class="opr"><strong id="mp"></strong><s id="mo"></s><span class="obd" id="ob" hidden></span></div></div></div>
+  <div class="fl"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span><input id="nm" placeholder="Ismingiz" autocomplete="name" aria-label="Ismingiz"></div>
+  <div class="fl"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><input id="ph" type="tel" inputmode="numeric" placeholder="+998 90 123 45 67" autocomplete="tel" aria-label="Telefon raqamingiz"></div>
+  <div class="fl"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><select id="rg" aria-label="Viloyat"><option>Toshkent shahri</option><option>Toshkent viloyati</option><option>Samarqand</option><option>Buxoro</option><option>Farg'ona</option><option>Andijon</option><option>Namangan</option><option>Qashqadaryo</option><option>Surxondaryo</option><option>Xorazm</option><option>Navoiy</option><option>Jizzax</option><option>Sirdaryo</option><option>Qoraqalpog'iston</option></select></div>
+  <div class="orow"><div class="qty" id="qb"><button type="button" id="qd" aria-label="Kamaytirish">−</button><b id="qn">1</b><button type="button" id="qi" aria-label="Ko'paytirish">+</button></div><div class="tot"><small>Jami</small><b id="tt"></b></div></div>
+  <div class="odl"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2"/><circle cx="18.5" cy="18.5" r="2"/></svg><span>Yetkazish <b>1–3 kun</b>.<br>Mahsulotni olganda to'laysiz.</span></div>
+  <div class="err" id="er"></div><button class="btn" id="go">Buyurtma berish</button>
+  <div class="otr">✓ Oldindan to'lov yo'q · Operator tasdiqlaydi</div></div>
  </div></div>
 
 <div class="ov ty" id="ty"><div class="md">
@@ -246,13 +298,15 @@ function grid(){
  if(s==='1')l.sort(function(a,b){return a.p-b.p});if(s==='2')l.sort(function(a,b){return b.p-a.p});
  $('empty').style.display=l.length?'none':'block';
  $('grid').innerHTML=l.map(function(x){var i=P.indexOf(x),d=disc(x);
-  return '<div class="p" data-v="'+i+'">'+(d?'<span class="sale">-'+d+'%</span>':'')+(x.hit?'<span class="hit">🔥 Mashhur</span>':'')+'<div class="img">'+vis(x)+'</div><div class="b"><small>'+esc(x.c)+'</small><h3>'+esc(x.n)+'</h3><div class="pr"><b>'+fmt(x.p)+'</b>'+(x.o>x.p?'<s>'+fmt(x.o)+'</s>':'')+'</div>'+(d?'<div class="cd" data-cd data-p="⏳ " hidden></div>':'')+'<button class="btn" data-i="'+i+'">Buyurtma berish</button></div></div>'}).join('');tick()}
+  return '<div class="p" data-v="'+i+'">'+(d?'<span class="sale">-'+d+'%</span>':'')+'<div class="img">'+vis(x)+'</div><div class="b"><small>'+esc(x.c)+(x.hit?' · 🔥 Mashhur':'')+'</small><h3>'+esc(x.n)+'</h3><div class="meta">1–3 kun · Olganda to\'lov</div><div class="row"><div class="pr"><b>'+fmt(x.p)+'</b>'+(x.o>x.p?'<s>'+fmt(x.o)+'</s>':'')+'</div><button class="btn" data-i="'+i+'">Buyurtma</button></div>'+(d?'<div class="cd" data-cd data-p="⏳ " hidden></div>':'')+'</div></div>'}).join('');tick()}
 $('bar').onclick=function(e){var c=e.target.getAttribute('data-c');if(c){cur=c;bar();grid()}};
 $('q').oninput=grid;$('so').onchange=grid;
 function sid(x){var m=/(\d+)\/?\s*$/.exec(x.oqim||'');return m?m[1]:''}
 function order(x){if(x.oqim&&!(CFG.api&&sid(x))){var w=window.open(x.oqim,'_blank');if(!w)location.href=x.oqim;return}
  try{var sv=JSON.parse(localStorage.getItem('sv_f')||'{}');if(sv.n&&!$('nm').value)$('nm').value=sv.n;if(sv.t&&(!ph.value||ph.value.length<6))ph.value=sv.t;if(sv.r)$('rg').value=sv.r}catch(e){}
- px('InitiateCheckout',x);cp=x;$('mt').textContent=x.n;$('mp').textContent=fmt(x.p);$('fw').style.display='block';$('er').textContent='';$('ov').classList.add('on')}
+ px('InitiateCheckout',x);cp=x;qn=1;$('mt').textContent=x.n;$('mp').textContent=fmt(x.p);$('mo').textContent=x.o>x.p?fmt(x.o):'';var dd=x.o>x.p?Math.round((1-x.p/x.o)*100):0;$('ob').hidden=!dd;$('ob').textContent='-'+dd+'%';$('oim').innerHTML=vis(x);$('qb').style.visibility=(CFG.api&&sid(x))?'hidden':'visible';qupd();$('fw').style.display='block';$('er').textContent='';$('ov').classList.add('on')}
+var qn=1;function qupd(){$('qn').textContent=qn;$('tt').textContent=fmt(cp.p*qn)}
+$('qd').onclick=function(){if(qn>1){qn--;qupd()}};$('qi').onclick=function(){if(qn<10){qn++;qupd()}};
 $('grid').onclick=function(e){var b=e.target.getAttribute('data-i');if(b!==null){order(P[b]);return}
  var c=e.target.closest('[data-v]');if(c)show(P[c.getAttribute('data-v')])};
 function show(x){cp=x;px('ViewContent',x);var d=Math.round((1-x.p/x.o)*100);
@@ -287,18 +341,18 @@ $('go').onclick=function(){
  function done(){
   px('Lead',cp);
   try{localStorage.setItem('sv_f',JSON.stringify({n:n,t:t,r:r}))}catch(e){}
-  thanks(cp,n,t,r)}
+  thanks(cp,n,t,r);if(qn>1)$('typ').textContent=fmt(cp.p*qn)+' ('+qn+' dona)'}
  var st=sid(cp);
  if(CFG.api&&st){
   btn.disabled=true;btn.textContent='Yuborilmoqda...';$('er').textContent='';
   fetch(CFG.api,{method:'POST',headers:{'Content-Type':'application/json'},
    body:JSON.stringify({full_name:n,phone_number:'+'+t.replace(/\D/g,''),stream:st})})
   .then(function(res){return res.json().catch(function(){return{}}).then(function(j){return{ok:res.ok,s:res.status,j:j}})})
-  .then(function(o){btn.disabled=false;btn.textContent='✅ Buyurtmani tasdiqlash';
+  .then(function(o){btn.disabled=false;btn.textContent='Buyurtma berish';
    if(o.ok)done();else $('er').textContent=o.s===400?"Ism yoki telefon noto'g'ri. Tekshirib, qayta urinib ko'ring":"Hozir yuborib bo'lmadi. Qayta urinib ko'ring yoki qo'ng'iroq qiling: "+CFG.phone})
-  .catch(function(){btn.disabled=false;btn.textContent='✅ Buyurtmani tasdiqlash';$('er').textContent="Internet xatosi. Qayta urinib ko'ring"});
+  .catch(function(){btn.disabled=false;btn.textContent='Buyurtma berish';$('er').textContent="Internet xatosi. Qayta urinib ko'ring"});
   return}
- var msg="🛒 Yangi buyurtma\nMahsulot: "+cp.n+"\nNarx: "+fmt(cp.p)+"\nIsm: "+n+"\nTel: "+t+"\nHudud: "+r;
+ var msg="🛒 Yangi buyurtma\nMahsulot: "+cp.n+(qn>1?" x"+qn:"")+"\nNarx: "+fmt(cp.p*qn)+"\nIsm: "+n+"\nTel: "+t+"\nHudud: "+r;
  done();
  if(CFG.tg)window.open('https://t.me/'+CFG.tg.replace('@','')+'?text='+encodeURIComponent(msg),'_blank')};
 // Mahsulotlar admin panelidan (/api/products) olinadi; ishlamasa fayldagi ro'yxat ishlatiladi
