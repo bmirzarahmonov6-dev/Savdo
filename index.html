@@ -673,6 +673,25 @@ ul.f li:before{background:#BCFF5E}
 @keyframes gspin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){#go.btn,#go.btn:before,#go.btn:after{animation:none}}
 </style>
+<style id="cardfinal">
+#grid .pc{border-radius:22px;padding:6px 6px 8px;background:#18181b;border:1px solid #2e2e33}
+#grid .pc .im{aspect-ratio:1/.85;border-radius:16px}
+#grid .pb{gap:4px;padding:10px 4px 0}
+#grid .pb h3{min-height:0;font-size:14px;font-weight:600}
+#grid .mt{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:11px;color:#9b9ba1;margin:0 0 4px}
+#grid .mt span{display:flex;align-items:center;gap:3px;white-space:nowrap}
+#grid .pp{display:flex;align-items:baseline;flex-wrap:wrap;gap:0 6px}
+#grid .pp b{font-size:18px;color:#fff}
+#grid .pp u{margin:0}
+#grid .pp s{font-size:11px;color:#77777d}
+#grid .svt{font-size:11px;font-weight:700;color:#c6ff3d;margin-top:1px}
+#grid .go{width:100%;height:42px;margin-top:8px;border-radius:14px;padding:0 4px 0 14px;display:flex;align-items:center;justify-content:space-between;font:800 13px inherit;font-family:inherit;color:#0b0b0b;box-shadow:none}
+#grid .go:hover{transform:none}
+#grid .go:active{transform:scale(.97)}
+#grid .go *{pointer-events:none}
+#grid .go .ar{width:32px;height:32px;border-radius:11px;background:#0b0b0b;display:grid;place-items:center}
+#grid .go .ar svg{stroke:#c6ff3d}
+</style>
 </head>
 <body>
 <div class="top">🚚 Butun O'zbekiston bo'ylab yetkazib berish · Olganda to'lov</div>
@@ -807,7 +826,7 @@ function grid(){
  if(s==='1')l.sort(function(a,b){return a.p-b.p});if(s==='2')l.sort(function(a,b){return b.p-a.p});
  $('empty').style.display=l.length?'none':'block';
  $('grid').innerHTML=l.map(function(x){var i=P.indexOf(x),d=disc(x),pr=fmt(x.p).replace(" so'm","");
-  return '<div class="pc" data-v="'+i+'"><div class="im"><span class="gh">'+esc(x.n.split(' ')[0])+'</span>'+vis(x)+(d?'<span class="dc"><i class="sb5"></i><b>−'+d+'%</b></span><span class="tw5 a">✦</span><span class="tw5 b">✦</span>':'')+(x.v?'<span class="vd">▶ Video</span>':'')+'</div><div class="pb"><h3>'+esc(x.n)+'</h3><div class="pf"><div class="pp"><b>'+pr+'</b><u>so\'m</u>'+(x.o>x.p?'<s>'+fmt(x.o)+'</s>':'')+'</div><button class="go" data-i="'+i+'" aria-label="Buyurtma berish"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></button></div></div></div>'}).join('');tick()}
+  return '<div class="pc" data-v="'+i+'"><div class="im"><span class="gh">'+esc(x.n.split(' ')[0])+'</span>'+vis(x)+(d?'<span class="dc"><i class="sb5"></i><b>−'+d+'%</b></span><span class="tw5 a">✦</span><span class="tw5 b">✦</span>':'')+(x.v?'<span class="vd">▶ Video</span>':'')+'</div><div class="pb"><h3>'+esc(x.n)+'</h3><div class="mt"><span class="rt"><svg width="12" height="12" viewBox="0 0 24 24" fill="#f5c542" stroke="#f5c542" stroke-width="1.5" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>'+esc(x.rt||'4.9')+'</span>'+(x.sd?'<span>🔥 '+esc(x.sd)+' sotilgan</span>':'')+'</div><div class="pp"><b>'+pr+'</b><u>so\'m</u>'+(x.o>x.p?'<s>'+fmt(x.o)+'</s>':'')+'</div>'+(x.o>x.p?'<div class="svt">'+fmt(x.o-x.p)+' tejaysiz</div>':'')+'<button class="go" data-i="'+i+'" aria-label="Buyurtma berish">Buyurtma berish<span class="ar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></button></div></div>'}).join('');tick()}
 $('bar').onclick=function(e){var c=e.target.getAttribute('data-c');if(c){cur=c;bar();grid()}};
 $('q').oninput=grid;$('so').onchange=grid;
 function sid(x){var m=/(\d+)\/?\s*$/.exec(x.oqim||'');return m?m[1]:''}
