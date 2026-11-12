@@ -651,6 +651,28 @@ ul.f li:before{background:#BCFF5E}
 @keyframes lh-mq{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){#home .nx .t1,#home .nx .u,#home .nx em.t2,#home .lh .nq,#home .lh .nz,.ch span,.lmi,.lcur,#home .lh .nq i:after{animation:none}#home .nx .u{background-size:100% 3px}}
 </style>
+<style id="redpromo">
+.dc .sb5{background:#E5262B}
+.dc,.dc b{color:#fff!important}
+.tw5{color:#fff}
+.grid .p .ol em{background:#E5262B;color:#fff}
+</style>
+<style id="bluego">
+#go.btn{position:relative;overflow:hidden;width:100%;height:60px;margin-top:12px;padding:0 70px 0 24px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:linear-gradient(135deg,#3b82ff 0%,#1f55ff 55%,#1438d6 100%);color:#fff;font-size:17px;font-weight:800;letter-spacing:.01em;text-align:center;cursor:pointer;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 12px 26px -10px rgba(31,85,255,.9);animation:gbreath 2.6s ease-in-out infinite;transition:transform .15s}
+#go.btn:active{transform:scale(.97)}
+#go.btn:before{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);animation:gshine 3.2s ease-in-out infinite;pointer-events:none}
+#go.btn:after{content:"\2192";position:absolute;right:7px;top:7px;width:44px;height:44px;border-radius:50%;background:#fff;color:#1438d6;font-size:22px;font-weight:800;display:grid;place-items:center;animation:gnudge 1.6s ease-in-out infinite,gripple 1.6s ease-out infinite}
+#go.btn:active:after{transform:scale(1.12)}
+#go.btn:disabled{animation:none;cursor:default}
+#go.btn:disabled:before{animation-duration:.9s}
+#go.btn:disabled:after{content:"";background:transparent;color:transparent;border:3px solid rgba(255,255,255,.35);border-top-color:#fff;width:38px;height:38px;right:10px;top:10px;animation:gspin .8s linear infinite}
+@keyframes gshine{0%,55%{left:-60%}100%{left:130%}}
+@keyframes gnudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-4px)}}
+@keyframes gripple{0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}100%{box-shadow:0 0 0 14px rgba(255,255,255,0)}}
+@keyframes gbreath{0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 12px 26px -10px rgba(31,85,255,.9)}50%{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 16px 34px -8px rgba(31,85,255,1)}}
+@keyframes gspin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){#go.btn,#go.btn:before,#go.btn:after{animation:none}}
+</style>
 </head>
 <body>
 <div class="top">🚚 Butun O'zbekiston bo'ylab yetkazib berish · Olganda to'lov</div>
@@ -972,7 +994,7 @@ $('hq').onclick=function(){$('qb2').click();setTimeout(function(){$('tools').scr
 $('hs').onclick=function(){$('sb2').click()};
 })();
 (function(){var $=function(i){return document.getElementById(i)},t,wi=0,ci=0,W;
-var m="Olganda to'laysiz \u00b7 Eshigingizgacha \u00b7 1\u20133 kun \u00b7 ";$('lmq').textContent=m+m+m+m;
+var m="Avval ko'ring, keyin to'lang \u00b7 Pulni olganda berasiz \u00b7 Eshigingizgacha olib boramiz \u00b7 1\u20133 kunda qo'lingizda \u00b7 Yoqqanini tanlang \u00b7 ";$('lmq').textContent=m+m+m+m;
 function words(){var a=[];try{for(var i=0;i<P.length&&a.length<4;i++)if(P[i]&&P[i].n)a.push(P[i].n)}catch(e){}return a.length?a:["Mahsulot qidirish"]}
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)return;
 function ty(){W=words();var w=W[wi%W.length];ci++;$('lty').textContent=w.slice(0,ci);
