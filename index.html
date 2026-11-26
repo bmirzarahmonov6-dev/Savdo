@@ -34,7 +34,7 @@ h2{font:800 clamp(30px,5vw,52px)/1 Sora,sans-serif;letter-spacing:-.045em;margin
 .c:hover .pic{box-shadow:0 0 0 2px var(--ac)}.c:hover svg{transform:translateY(-8px) scale(1.06)}
 .bd{position:absolute;top:14px;left:14px;z-index:2;background:#4f5cff;color:#fff;font-size:13px;font-weight:600;padding:4px 12px;border-radius:99px}
 .mt{display:flex;gap:10px;align-items:flex-start;padding:14px 4px 0}.mt div{flex:1;min-width:0}
-.mt h3{margin:0;font-size:18px;font-weight:600}.mt small{color:var(--mute)}
+.mt h3{margin:0;font-size:18px;font-weight:600}
 .pr{font-weight:600;margin-top:4px}.old{color:var(--mute);text-decoration:line-through;font-weight:400;font-size:14px;margin-left:8px}
 .add{flex:none;width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:24px}
 footer{max-width:1200px;margin:60px auto 0;padding:30px 20px 50px;border-top:1px solid var(--line);color:var(--mute);font-size:14px}
@@ -124,7 +124,7 @@ function loadP(){var ctl=window.AbortController?new AbortController():null,t=set
  return fetch('/api/products',ctl?{signal:ctl.signal}:{}).then(function(r){return r.ok?r.json():null}).then(function(d){clearTimeout(t);return Array.isArray(d)?d:null}).catch(function(){return null})}
 function toast(m){var t=$("t");t.textContent=m;t.classList.add("on");clearTimeout(t.k);t.k=setTimeout(function(){t.classList.remove("on")},1700)}
 function tabs(){$("tabs").innerHTML=cats.map(function(c){return '<button class="tab" aria-pressed="'+(c==cat)+'" data-c="'+esc(c)+'">'+esc(c)+'</button>'}).join("")}
-function card(x){return '<div class="c" data-v="'+x.id+'"><div class="pic" style="--h:'+x.h+'">'+(x.o>x.p?'<span class="bd">−'+disc(x)+'%</span>':'')+art(x)+'</div><div class="mt"><div><h3>'+esc(x.n)+'</h3><small>'+esc(x.f[0]||x.c||"")+'</small><div class="pr">'+som(x.p)+(x.o>x.p?'<span class="old">'+som(x.o)+'</span>':'')+'</div></div><button class="add" data-a="'+x.id+'" aria-label="Buyurtma berish">+</button></div></div>'}
+function card(x){return '<div class="c" data-v="'+x.id+'"><div class="pic" style="--h:'+x.h+'">'+(x.o>x.p?'<span class="bd">−'+disc(x)+'%</span>':'')+art(x)+'</div><div class="mt"><div><h3>'+esc(x.n)+'</h3><div class="pr">'+som(x.p)+(x.o>x.p?'<span class="old">'+som(x.o)+'</span>':'')+'</div></div><button class="add" data-a="'+x.id+'" aria-label="Buyurtma berish">+</button></div></div>'}
 function grid(){$("grid").innerHTML=P.filter(function(x){return cat=="Hammasi"||x.c==cat}).map(card).join("")}
 function bindForm(){
  var ph=$("ph");if(!ph)return;
