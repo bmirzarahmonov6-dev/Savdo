@@ -21,26 +21,8 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rg
 .logo{font:800 22px Sora,sans-serif;letter-spacing:-.04em;margin-right:auto}.logo i{color:var(--ac);font-style:normal}
 .nav a{color:#c4c7d4;text-decoration:none;margin-right:22px;font-size:15px}
 .cb{background:#f1f2f6;color:#0d0e13;padding:9px 18px;border-radius:99px;font-weight:600;text-decoration:none;font-size:15px}
-.hero{background:radial-gradient(ellipse at 70% 40%,hsl(var(--h,250) 85% 55%/.4),transparent 60%),#0b0c10;color:#f1f2f6;overflow:hidden;transition:--h .6s}
-.hi{max-width:1200px;margin:auto;padding:40px 20px 30px;min-height:calc(100svh - 62px);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:20px}
-h1{font:800 clamp(42px,7vw,92px)/.98 Sora,sans-serif;letter-spacing:-.05em;margin:0 0 18px}
-.lead{color:#aeb2c2;font-size:19px;max-width:34ch;margin:0 0 28px}
-.cta{display:inline-block;background:#f1f2f6;color:#0d0e13;padding:16px 30px;border-radius:99px;font-weight:600;text-decoration:none}
-.ghost{margin-left:16px;color:#c4c7d4}
-.stage{position:relative;perspective:900px;display:grid;place-items:center;aspect-ratio:1}
-.stage .t{transform-style:preserve-3d;transition:transform .2s;width:80%}
-.stage svg{width:100%;filter:drop-shadow(0 40px 40px rgba(0,0,0,.55))}
-.stage svg.in{animation:in .7s cubic-bezier(.2,1,.3,1) both}
 @keyframes in{from{opacity:0;transform:translateY(40px) scale(.9)}}
-.ch{position:absolute;background:rgba(255,255,255,.08);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);padding:9px 16px;border-radius:99px;font-size:14px;font-weight:500}
-.ch:nth-of-type(1){left:0;top:16%}.ch:nth-of-type(2){right:0;top:40%}.ch:nth-of-type(3){left:6%;bottom:12%}
-.bot{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.tag{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:99px;padding:8px 8px 8px 24px;margin-right:auto}
-.tag span{color:#aeb2c2;margin-left:10px}.tag button{background:#4f5cff;color:#fff;padding:12px 22px;border-radius:99px;font-weight:600}
-.dots{display:flex;gap:8px}.dots button{width:10px;height:10px;border-radius:9px;background:#fff;opacity:.3;transition:.3s}.dots button[aria-current=true]{width:34px;opacity:1}
-.perks{max-width:1200px;margin:0 auto;padding:28px 20px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.perks div{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 20px;color:var(--mute);font-size:14px}.perks b{display:block;color:var(--ink);font-size:16px}
-main{max-width:1200px;margin:auto;padding:56px 20px 0}
+main{max-width:1200px;margin:auto;padding:34px 20px 0}
 h2{font:800 clamp(30px,5vw,52px)/1 Sora,sans-serif;letter-spacing:-.045em;margin:0 0 22px}
 .tabs{display:flex;gap:8px;overflow-x:auto;margin-bottom:22px;scrollbar-width:none}
 .tab{flex:none;padding:10px 20px;border-radius:99px;border:1px solid var(--line);background:var(--card)}
@@ -71,17 +53,13 @@ footer{max-width:1200px;margin:60px auto 0;padding:30px 20px 50px;border-top:1px
 .msg{padding:24px 12px;text-align:center}.msg svg{width:84px;height:84px}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140px);background:#f1f2f6;color:#0d0e13;padding:13px 24px;border-radius:99px;z-index:80;transition:transform .35s;font-weight:500;white-space:nowrap}
 .toast.on{transform:translate(-50%,0)}
-@media (max-width:860px){.hi{grid-template-columns:1fr;min-height:0;padding-top:28px}.stage{aspect-ratio:1.1}.stage .t{width:66%}.ch{display:none}.nav{display:none}.perks{grid-template-columns:1fr}.mc{grid-template-columns:1fr}.mc .pic{min-height:240px}.mb{padding:8px 22px 26px}.grid{grid-template-columns:repeat(2,1fr);gap:12px}.mt h3{font-size:15px}.add{width:38px;height:38px;font-size:20px}.tag{width:100%;margin:0}}
+@media (max-width:860px){main{padding-top:24px}.nav{display:none}.mc{grid-template-columns:1fr}.mc .pic{min-height:240px}.mb{padding:8px 22px 26px}.grid{grid-template-columns:repeat(2,1fr);gap:12px}.mt h3{font-size:15px}.add{width:38px;height:38px;font-size:20px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
-.stage .t .pimg{width:100%;height:100%;object-fit:contain;border-radius:28px;filter:drop-shadow(0 40px 40px rgba(0,0,0,.55))}
-.stage .t .emj{font-size:clamp(120px,22vw,220px);line-height:1}
-.in{animation:in .7s cubic-bezier(.2,1,.3,1) both}
 .pic .pimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .45s cubic-bezier(.2,1,.3,1)}
 .pic .emj{font-size:84px;line-height:1;filter:drop-shadow(0 22px 20px rgba(0,0,0,.5));transition:transform .45s cubic-bezier(.2,1,.3,1)}
 .c:hover .pic .emj{transform:translateY(-8px) scale(1.06)}.c:hover .pimg{transform:scale(1.05)}
 .mc .pic .emj{font-size:130px}
-.hero[hidden]{display:none}
 .err{color:var(--sale);font-size:13.5px;margin:0}.err:empty{display:none}
 </style>
 <script>
@@ -102,12 +80,6 @@ function px(ev,x){try{if(!window.fbq||PIXEL_ID.indexOf("PIXEL_ID")>=0)return;
 <linearGradient id="dk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a4e5d"/><stop offset="1" stop-color="#14151b"/></linearGradient>
 <linearGradient id="sc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f5cff"/><stop offset=".55" stop-color="#a86bff"/><stop offset="1" stop-color="#ff7ab8"/></linearGradient></defs></svg>
 <header><div class="bar"><div class="logo" id="lg">volt<i>.</i></div><nav class="nav"><a href="#shop">Katalog</a><a href="#shop">Chegirmalar</a></nav><a class="cb" href="#shop">Buyurtma berish</a></div></header>
-<section class="hero" id="hero"><div class="hi">
-<div><h1>Kelajak endi qo‘lingizda.</h1><p class="lead">Eng yaxshi telefon, quloqchin va gadjetlar. Rasmiy kafolat bilan, tez yetkazamiz.</p><a class="cta" href="#shop">Katalogni ochish</a><span class="ghost">12 oy kafolat</span></div>
-<div class="stage" id="stage"><div class="t" id="art"></div><span class="ch" id="c1"></span><span class="ch" id="c2"></span><span class="ch" id="c3"></span></div>
-<div class="bot"><div class="tag"><div><b id="fn"></b><span id="fp"></span></div><button id="fa">Buyurtma berish</button></div><div class="dots" id="dots"></div></div>
-</div></section>
-<section class="perks"><div><b>Rasmiy kafolat</b>Barcha mahsulotlarga 12 oygacha</div><div><b>Tez yetkazish</b>Toshkent bo‘ylab 1 kunda</div><div><b>Qabul qilganda to‘lang</b>Naqd yoki karta bilan</div></section>
 <main id="shop"><h2>Katalog</h2><div class="tabs" id="tabs"></div><div class="grid" id="grid"></div></main>
 <footer id="ft">© 2026 Volt. Buyurtmadan keyin operator qo‘ng‘iroq qilib tasdiqlaydi.</footer>
 <div class="ov" id="ov"></div><div class="mv" id="mv"><div class="mc" id="mc"></div></div>
@@ -138,7 +110,7 @@ var P=[
   d:"Arab tili va tajvid qoidalarini o'rganib, Qur'on o'qishni o'rganish uchun kitob. QR-kod orqali audio ham eshitish mumkin.",
   f:["Arab tili va tajvid qoidalari","QR-kod orqali audio (Ustoz Shayx Alijon qori)","O'zbekiston bo'ylab yetkazib berish","Olganda to'lov"],oqim:"https://alijahon.uz/oqim/83246"}
 ];
-var HU=[250,280,220,200,300,170,330,240],F=[],fi=0,cat="Hammasi",cats=["Hammasi"],tm;
+var HU=[250,280,220,200,300,170,330,240],cat="Hammasi",cats=["Hammasi"];
 var $=function(i){return document.getElementById(i)},G=function(i){return P.filter(function(x){return x.id==i})[0]};
 function esc(t){return String(t==null?'':t).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function som(n){return n.toLocaleString("ru-RU")+" soʻm"}
@@ -151,11 +123,6 @@ function setP(list){P=list.filter(function(x){return x&&x.n&&x.p>0&&sid(x)});
 function loadP(){var ctl=window.AbortController?new AbortController():null,t=setTimeout(function(){if(ctl)ctl.abort()},4000);
  return fetch('/api/products',ctl?{signal:ctl.signal}:{}).then(function(r){return r.ok?r.json():null}).then(function(d){clearTimeout(t);return Array.isArray(d)?d:null}).catch(function(){return null})}
 function toast(m){var t=$("t");t.textContent=m;t.classList.add("on");clearTimeout(t.k);t.k=setTimeout(function(){t.classList.remove("on")},1700)}
-function feat(i){fi=i;var x=G(F[i]);$("hero").style.setProperty("--h",x.h);$("art").innerHTML=art(x,"in");$("fn").textContent=x.n;$("fp").textContent=som(x.p);$("fa").dataset.a=x.id;
-for(var k=0;k<3;k++){var c=$("c"+(k+1)),s=x.f[k]||"";c.textContent=s.length>30?s.slice(0,28)+"…":s;c.style.display=s?"":"none"}
-$("dots").innerHTML=F.map(function(f,k){return '<button data-f="'+k+'" aria-label="'+esc(G(f).n)+'" '+(k==i?'aria-current="true"':'')+'></button>'}).join("")}
-function auto(){clearInterval(tm);if(F.length>1&&!matchMedia("(prefers-reduced-motion:reduce)").matches)tm=setInterval(function(){feat((fi+1)%F.length)},4500)}
-function heroInit(){F=P.slice().sort(function(a,b){return disc(b)-disc(a)}).slice(0,4).map(function(x){return x.id});if(!F.length){$("hero").hidden=true;return}$("hero").hidden=false;feat(0);auto()}
 function tabs(){$("tabs").innerHTML=cats.map(function(c){return '<button class="tab" aria-pressed="'+(c==cat)+'" data-c="'+esc(c)+'">'+esc(c)+'</button>'}).join("")}
 function card(x){return '<div class="c" data-v="'+x.id+'"><div class="pic" style="--h:'+x.h+'">'+(x.o>x.p?'<span class="bd">−'+disc(x)+'%</span>':'')+art(x)+'</div><div class="mt"><div><h3>'+esc(x.n)+'</h3><small>'+esc(x.f[0]||x.c||"")+'</small><div class="pr">'+som(x.p)+(x.o>x.p?'<span class="old">'+som(x.o)+'</span>':'')+'</div></div><button class="add" data-a="'+x.id+'" aria-label="Buyurtma berish">+</button></div></div>'}
 function grid(){$("grid").innerHTML=P.filter(function(x){return cat=="Hammasi"||x.c==cat}).map(card).join("")}
@@ -185,15 +152,12 @@ document.addEventListener("click",function(e){var t=e.target.closest("button,.c"
 if(d.a){e.stopPropagation();view(d.a,true)}
 else if(d.v)view(d.v,false);
 else if(d.c){cat=d.c;tabs();grid()}
-else if(d.f){feat(+d.f);auto()}
 else if("close" in d)shut();
 else if("buy" in d)sendLead(d.buy)});
 $("ov").addEventListener("click",shut);
 document.addEventListener("keydown",function(e){if(e.key=="Escape")shut()});
-var st=$("stage");st.addEventListener("pointermove",function(e){var r=st.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;$("art").style.transform="rotateY("+x*18+"deg) rotateX("+-y*18+"deg)"});
-st.addEventListener("pointerleave",function(){$("art").style.transform=""});
 function route(){try{var m=/^#p(\d+)$/.exec(location.hash);if(m&&P[m[1]-1])view(P[m[1]-1].id,false)}catch(e){}}
-function render(){tabs();grid();heroInit()}
+function render(){tabs();grid()}
 document.title=CFG.shop;$("lg").innerHTML=esc(CFG.shop)+"<i>.</i>";$("ft").textContent="© 2026 "+CFG.shop+". Buyurtmadan keyin operator qo‘ng‘iroq qilib tasdiqlaydi.";
 setP(P);render();
 loadP().then(function(d){if(d){setP(d);render()}route()});
